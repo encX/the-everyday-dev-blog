@@ -1,7 +1,12 @@
 import * as React from 'react';
+import PageLayout from '../components/page-layout';
 
 const Index: React.FunctionComponent = () => (
-	<div>Hello world</div>
+	<PageLayout>
+		<div id="test">
+			Hello! สวัสดี
+		</div>
+	</PageLayout>
 );
 
 export default Index;

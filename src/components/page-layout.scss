@@ -1,0 +1,28 @@
+@import "./variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Sarabun&display=swap');
+
+// 1. do mobile-first layout
+// 2. expand with grid
+// 3. if browser doesn't support grid; fallback to mobile
+
+html {
+	font-family: 'Sarabun', sans-serif;
+
+	background-color: $light;
+	color: $dark;
+
+	@media (prefers-color-scheme: dark) {
+		background-color: $dark;
+		color: $light;
+	}
+}
+
+body {
+	max-width: $screen-lg-min;
+	min-width: $screen-xs;
+	margin: 0 auto;
+}
+
+#root {
+	display: grid;
+}
