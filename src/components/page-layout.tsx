@@ -2,15 +2,14 @@ import * as React from 'react';
 import './page-layout.scss';
 
 const PageLayout: React.FunctionComponent = ({ children }) => {
-	// Header -> meta seo keyword title
-	// Title + Subtitle
-	// Nav
-	// Content
-	// Foot
+	// SEO ?
 	return (
-		<div id="root">
+		<main>
+			<header></header>
+			<nav></nav>
 			{children}
-		</div>
+			<footer></footer>
+		</main>
 	);
 };
 
