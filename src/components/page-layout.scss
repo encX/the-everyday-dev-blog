@@ -1,12 +1,15 @@
 @import "./variables.scss";
-@import url('https://fonts.googleapis.com/css?family=Sarabun&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sarabun:200,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,900&display=swap');
 
 // 1. do mobile-first layout
 // 2. expand with grid
 // 3. if browser doesn't support grid; fallback to mobile
 
 html {
+	height: 100%;
 	font-family: 'Sarabun', sans-serif;
+	font-size: 20px;
 
 	background-color: $light;
 	color: $dark;
@@ -17,12 +20,58 @@ html {
 	}
 }
 
+body,
+#___gatsby,
+#gatsby-focus-wrapper,
+#root {
+	min-height: 100vh;
+}
+
 body {
 	max-width: $screen-lg-min;
 	min-width: $screen-xs;
 	margin: 0 auto;
 }
 
-main {
+#root { // todo: block allocations + responsive elements
 	display: grid;
+	grid-gap: 32px 0;
+	grid-template:
+			"header"
+			"nav"
+			"main" 1fr
+			"footer";
+
+	> * {
+		background-color: #888888;
+	}
+
+	> header { // todo: spacing
+		grid-area: header;
+		font-family: 'Roboto', sans-serif;
+		h1 {
+			font-weight: 900;
+			font-size: 60px;
+		}
+		h4 { // todo: lower the color brightness
+			font-weight: 300;
+			font-size: 24px;
+		}
+	}
+
+	> nav {
+		grid-area: nav;
+	}
+
+	> main {
+		grid-area: main;
+	}
+
+	> footer {
+		grid-area: footer;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
 }
