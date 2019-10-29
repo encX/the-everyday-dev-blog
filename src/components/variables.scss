@@ -8,7 +8,11 @@ $screen-md-max: ($screen-lg-min - 1) !default;
 
 // Color palette
 $light: #DDDDDD;
+$lighter: #FFFFFF;
+$light-dim: #BBBBBB;
+$dark-bright: #555555;
 $dark: #333333;
+$darker: #111111;
 
 $accent: #FF9926;
 $accent-light: lighten($accent, 15%);

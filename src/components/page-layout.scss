@@ -1,6 +1,6 @@
 @import "./variables.scss";
 @import url('https://fonts.googleapis.com/css?family=Sarabun:200,600&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,900&display=swap');
 
 // 1. do mobile-first layout
 // 2. expand with grid
@@ -29,12 +29,13 @@ body,
 
 body {
 	max-width: $screen-lg-min;
-	min-width: $screen-xs;
+	min-width: 320px;
 	margin: 0 auto;
 }
 
-#root { // todo: block allocations + responsive elements
+#root {
 	display: grid;
+	padding: 0 16px;
 	grid-gap: 32px 0;
 	grid-template:
 			"header"
@@ -42,36 +43,32 @@ body {
 			"main" 1fr
 			"footer";
 
-	> * {
-		background-color: #888888;
-	}
-
-	> header { // todo: spacing
+	> header { // todo: separate this to its own component and style
 		grid-area: header;
 		font-family: 'Roboto', sans-serif;
+		margin-top: 32px;
+
+		@media screen and (max-width: $screen-sm-max) { text-align: center }
+
 		h1 {
 			font-weight: 900;
 			font-size: 60px;
+
+			@media screen and (max-width: $screen-xs-max) { font-size: 34px }
 		}
-		h4 { // todo: lower the color brightness
-			font-weight: 300;
+		h4 {
+			font-weight: 100;
 			font-size: 24px;
+			color: $dark-bright;
+
+			@media (prefers-color-scheme: dark) { color: $light-dim }
+			@media screen and (max-width: $screen-xs-max) { font-size: 14px; font-weight: 300 }
 		}
 	}
 
-	> nav {
-		grid-area: nav;
-	}
-
-	> main {
-		grid-area: main;
-	}
-
-	> footer {
-		grid-area: footer;
-	}
+	> nav { grid-area: nav }
+	> main { grid-area: main }
+	> footer { grid-area: footer }
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-}
+h1, h2, h3, h4, h5, h6 { margin: 0 }
