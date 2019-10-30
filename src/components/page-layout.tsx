@@ -12,9 +12,8 @@ const PageLayout: React.FunctionComponent = ({ children }) => {
 			<nav>
 				Nav items goes here
 			</nav>
-			{/*{children}*/}
 			<main>
-				Content goes here
+				{children}
 			</main>
 			<footer>
 				Footer goes here
