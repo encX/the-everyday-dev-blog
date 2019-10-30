@@ -13,7 +13,7 @@ const dataContent: ArticleCardProps[] = [
 
 const Index: React.FunctionComponent = () => (
 	<PageLayout>
-		<SectionArticlesList sectionName="Featured articles" articles={dataContent}/>
+		<SectionArticlesList sectionName="Featured articles" articles={dataContent.slice(0, 1)} featured/>
 		<SectionArticlesList sectionName="Recent posts" articles={dataContent}/>
 	</PageLayout>
 );

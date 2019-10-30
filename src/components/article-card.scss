@@ -1,7 +1,6 @@
 @import "./variables.scss";
 
 .article-card {
-	height: 300px;
 	border-radius: 6px;
 	overflow: hidden;
 	cursor: pointer;
@@ -14,6 +13,19 @@
 		"card-title" auto
 		"card-headliner" auto
 		/ 1fr;
+
+	&:hover {
+		grid-template:
+				"card-image" 0
+				"card-title" auto
+				"card-headliner" 1fr
+		/ 1fr;
+
+		> h3, > h4 {
+			white-space: initial;
+			overflow: visible;
+		}
+	}
 
 	background-color: $lighter;
 	box-shadow: $shadow-normal 5px 5px 15px -10px;

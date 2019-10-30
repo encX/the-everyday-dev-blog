@@ -1,6 +1,6 @@
 @import "./variables.scss";
 
-section.articles {
+.articles {
 	display: grid;
 	grid-gap: 16px;
 
@@ -8,11 +8,16 @@ section.articles {
 	@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
 	@media screen and (min-width: $screen-md-min) { grid-template: "article-section-title article-section-title article-section-title" / 1fr 1fr 1fr; }
 
-	> h2 {
-		grid-area: article-section-title;
+	&.featured {
+		@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title" / 1fr; }
+		@media screen and (min-width: $screen-md-min) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
+		> article { height: 350px }
 	}
 
-	> article {
+	> h2 { grid-area: article-section-title }
+	> article { height: 300px }
+}
 
-	}
+.articles + .articles {
+	margin-top: 32px;
 }
