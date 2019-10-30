@@ -2,8 +2,6 @@
 
 .article-card {
 	height: 300px;
-	background-color: #FFFFFF;
-	box-shadow: #888888 5px 5px 15px -10px;
 	border-radius: 6px;
 	overflow: hidden;
 	cursor: pointer;
@@ -16,6 +14,13 @@
 		"card-title" auto
 		"card-headliner" auto
 		/ 1fr;
+
+	background-color: $lighter;
+	box-shadow: $shadow-normal 5px 5px 15px -10px;
+	@media (prefers-color-scheme: dark) {
+		background-color: $dark-bright;
+		box-shadow: $shadow-dark 5px 5px 15px -10px;
+	}
 
 	> img {
 		grid-area: card-image;
