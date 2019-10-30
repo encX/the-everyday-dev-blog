@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .article-card {
 	height: 300px;
 	background-color: #FFFFFF;
@@ -15,26 +17,32 @@
 		"card-headliner" auto
 		/ 1fr;
 
-	img {
+	> img {
 		grid-area: card-image;
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
 	}
 
-	h3, h4 { margin-left: 16px; margin-right: 16px;  }
+	> h3, > h4 { margin-left: 16px; margin-right: 16px;  }
 
-	h3 {
+	> h3 {
 		grid-area: card-title;
-		font-size: 28px;
+		font-size: 20px;
 		font-weight: 600;
 		margin-top: 14px;
+
+		@media screen and (min-width: $screen-sm-min) { font-size: 24px; }
+		@media screen and (min-width: $screen-lg-min) { font-size: 28px; }
 	}
 
-	h4 {
+	> h4 {
 		grid-area: card-headliner;
-		font-size: 18px;
+		font-size: 14px;
 		font-weight: 300;
 		margin-top: 4px;
+
+		@media screen and (min-width: $screen-sm-min) { font-size: 18px; }
+		@media screen and (min-width: $screen-lg-min) { font-size: 20px; }
 	}
 }

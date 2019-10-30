@@ -47,22 +47,23 @@ body {
 		grid-area: header;
 		font-family: 'Roboto', sans-serif;
 		margin-top: 32px;
+		text-align: center;
 
-		@media screen and (max-width: $screen-sm-max) { text-align: center }
+		@media screen and (min-width: $screen-md-min) { text-align: left }
 
 		h1 {
 			font-weight: 900;
-			font-size: 60px;
+			font-size: 34px;
 
-			@media screen and (max-width: $screen-xs-max) { font-size: 34px }
+			@media screen and (min-width: $screen-sm-min) { font-size: 60px }
 		}
 		h4 {
-			font-weight: 100;
-			font-size: 24px;
+			font-weight: 300;
+			font-size: 14px;
 			color: $dark-bright;
 
 			@media (prefers-color-scheme: dark) { color: $light-dim }
-			@media screen and (max-width: $screen-xs-max) { font-size: 14px; font-weight: 300 }
+			@media screen and (min-width: $screen-sm-min) { font-size: 24px; font-weight: 100 }
 		}
 	}
 
