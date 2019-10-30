@@ -2,8 +2,11 @@
 
 section.articles {
 	display: grid;
-	grid-template: "article-section-title" / 1fr;
 	grid-gap: 16px;
+
+	grid-template: "article-section-title" / 1fr;
+	@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
+	@media screen and (min-width: $screen-md-min) { grid-template: "article-section-title article-section-title article-section-title" / 1fr 1fr 1fr; }
 
 	> h2 {
 		grid-area: article-section-title;
