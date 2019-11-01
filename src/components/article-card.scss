@@ -51,19 +51,19 @@
 
 	> h3 {
 		grid-area: card-title;
-		font-size: 20px;
 		font-weight: 600;
 		margin-top: 14px;
 
-		@media screen and (min-width: $screen-sm-min) { font-size: 20px; }
+		font-size: 18px;
+		@media screen and (min-width: $screen-sm-min) { font-size: 22px; }
 	}
 
 	> h4 {
 		grid-area: card-headliner;
-		font-size: 14px;
 		font-weight: 300;
 		margin-bottom: 16px;
 
+		font-size: 16px;
 		@media screen and (min-width: $screen-sm-min) { font-size: 18px; }
 	}
 }

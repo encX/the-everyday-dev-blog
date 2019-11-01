@@ -14,10 +14,29 @@
 		> article { height: 350px }
 	}
 
-	> h2 { grid-area: article-section-title }
+	> h2 {
+		grid-area: article-section-title;
+		width: fit-content;
+		padding: 0 8px 2px 8px;
+		border-radius: 4px;
+
+		font-size: 20px;
+		@media screen and (min-width: $screen-sm-min) { font-size: 24px; }
+
+		background-color: $dark;
+		color: $lighter;
+		@media (prefers-color-scheme: dark) {
+			background-color: $lighter;
+			color: $darker;
+		}
+	}
 	> article { height: 300px }
 }
 
 .articles + .articles {
-	margin-top: 32px;
+	margin-top: 16px;
+	padding-top: 16px;
+
+	border-color: $dark;
+	@media (prefers-color-scheme: dark) { border-color: $light }
 }
