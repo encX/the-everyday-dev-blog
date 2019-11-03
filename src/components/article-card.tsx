@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { ArticleCardProps } from '../types/article-card.props';
+import { Link } from 'gatsby';
 import './article-card.scss';
+import { MarkdownMeta } from '../types/markdown-meta';
 
-const ArticleCard: React.FunctionComponent<ArticleCardProps> = ({ title, headliner, image }) => (
+const ArticleCard: React.FunctionComponent<MarkdownMeta> = ({ title, headliner, featuredImage, path }) => (
 	<article className="article-card">
-		<img src={image} alt="Featured image" />
-		<h3>{title}</h3>
-		<h4>{headliner}</h4>
+		<Link to={path}>
+			<img src={featuredImage} alt="Featured image" />
+			<h3>{title}</h3>
+			<h4>{headliner}</h4>
+		</Link>
 	</article>
 );
 

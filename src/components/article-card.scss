@@ -6,26 +6,6 @@
 	cursor: pointer;
 	box-sizing: border-box;
 
-	display: grid;
-	grid-template:
-		"card-image" 1fr
-		"card-title" auto
-		"card-headliner" auto
-		/ 1fr;
-
-	&:hover {
-		> img {
-			grid-area: 1 / 1 / 4 / 2;
-			z-index: 200;
-			opacity: 0.3;
-		}
-
-		> h3, > h4 {
-			white-space: initial;
-			overflow: visible;
-		}
-	}
-
 	background-color: $lighter;
 	box-shadow: $shadow-normal 5px 5px 15px -10px;
 	@media (prefers-color-scheme: dark) {
@@ -33,23 +13,45 @@
 		box-shadow: $shadow-dark 5px 5px 15px -10px;
 	}
 
-	> img {
+	a {
+		height: 100%;
+		width: 100%;
+		display: grid;
+		grid-template: "card-image" 1fr "card-title" auto "card-headliner" auto
+		/ 1fr;
+	}
+
+	&:hover {
+		img {
+			grid-area: 1 / 1 / 4 / 2;
+			z-index: 200;
+			opacity: 0.3;
+		}
+
+		h3, h4 {
+			white-space: initial;
+			overflow: visible;
+		}
+	}
+
+	img {
 		grid-area: card-image;
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
 	}
 
-	> h3, > h4 {
+	h3, h4 {
 		margin-left: 16px;
 		margin-right: 16px;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow-x: hidden;
 		overflow-y: visible;
+		text-decoration: none;
 	}
 
-	> h3 {
+	h3 {
 		grid-area: card-title;
 		font-weight: 600;
 		margin-top: 14px;
@@ -58,7 +60,7 @@
 		@media screen and (min-width: $screen-sm-min) { font-size: 22px; }
 	}
 
-	> h4 {
+	h4 {
 		grid-area: card-headliner;
 		font-weight: 300;
 		margin-bottom: 16px;

@@ -1,21 +1,49 @@
 import * as React from 'react';
+import { graphql } from 'gatsby';
 import PageLayout from '../components/page-layout';
 import SectionArticlesList from '../components/section-articles-list';
-import { ArticleCardProps } from '../types/article-card.props';
+import { MarkdownMeta } from '../types/markdown-meta';
 
-const dataContent: ArticleCardProps[] = [
-	{ title: 'Title หัวข้อ ลองดูสิถ้ายาวๆจะเป็นยังไง', headliner: 'Headliner ข้อความจั่วหัว', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg' },
-	{ title: 'Title หัวข้อ', headliner: 'Headliner ข้อความจั่วหัว แล้วถ้าอันนี้ยาวบ้างหล่ะ', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg' },
-	{ title: 'Title หัวข้อแล้วถ้าสองอันนี้', headliner: 'Headliner ข้อความจั่วหัวมันยาวออกมาทั้งคู่จะทำยังไง', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg' },
-	{ title: 'Title หัวข้อ', headliner: 'Headliner ข้อความจั่วหัว', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg' },
-	{ title: 'Title หัวข้อ', headliner: 'Headliner ข้อความจั่วหัว', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg' },
-];
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+            headliner
+            featuredImage
+          }
+        }
+      }
+    }
+  }
+`;
 
-const Index: React.FunctionComponent = () => (
-	<PageLayout>
-		<SectionArticlesList sectionName="Featured articles" articles={dataContent.slice(0, 1)} featured/>
-		<SectionArticlesList sectionName="Recent posts" articles={dataContent}/>
-	</PageLayout>
-);
+interface IndexPageProps {
+	data: {
+		allMarkdownRemark: {
+			edges: [{
+				node: {
+					frontmatter: MarkdownMeta;
+				};
+			}];
+		};
+	};
+}
+
+const Index: React.FunctionComponent<IndexPageProps> = ({ data }) => {
+	const articles = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter);
+	return (
+		<PageLayout>
+			<SectionArticlesList sectionName="Featured articles" articles={articles.slice(0, 1)} featured/>
+			<SectionArticlesList sectionName="Recent posts" articles={articles}/>
+		</PageLayout>
+	);
+};
 
 export default Index;

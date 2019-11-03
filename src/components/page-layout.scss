@@ -12,12 +12,14 @@ html {
 	font-size: 20px;
 
 	background-color: $light;
-	color: $dark;
+	@media (prefers-color-scheme: dark) {background-color: $dark;}
+}
 
-	@media (prefers-color-scheme: dark) {
-		background-color: $dark;
-		color: $light;
-	}
+html, a {
+	color: $dark;
+	@media (prefers-color-scheme: dark) { color: $light; }
+
+	text-decoration: none;
 }
 
 body,
