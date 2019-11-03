@@ -16,7 +16,7 @@
     "gatsby-plugin-sass": "^2.1.20",
     "gatsby-plugin-sharp": "^2.2.32",
     "gatsby-plugin-typescript": "^2.1.15",
-    "gatsby-source-filesystem": "^2.1.33",
+    "gatsby-source-filesystem": "^2.1.35",
     "gatsby-transformer-sharp": "^2.3.0",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
@@ -34,6 +34,9 @@
     "@typescript-eslint/parser": "^2.5.0",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
+    "gatsby-remark-custom-blocks": "^2.1.15",
+    "gatsby-remark-images": "^3.1.28",
+    "gatsby-transformer-remark": "^2.6.32",
     "jest": "^24.9.0"
   }
 }
