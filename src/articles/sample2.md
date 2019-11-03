@@ -1,9 +1,8 @@
 ---
 title: "Sample article page title"  
 headliner: "Sample article headliner"  
-featured: true
 featuredImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg"  
-path: "/a/sample"  
+path: "/a/sample2"  
 date: "2019-11-03"
 ---
 

@@ -4,4 +4,5 @@ export interface MarkdownMeta {
 	title: string;
 	headliner: string;
 	featuredImage: string;
+	featured?: boolean;
 }
