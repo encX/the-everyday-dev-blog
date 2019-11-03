@@ -17,6 +17,7 @@ export const pageQuery = graphql`
             title
             headliner
             featuredImage
+            featured
           }
         }
       }
@@ -37,11 +38,15 @@ interface IndexPageProps {
 }
 
 const Index: React.FunctionComponent<IndexPageProps> = ({ data }) => {
-	const articles = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter);
+	const allArticles = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter);
+	const featuredArticles = allArticles.filter(article => article.featured);
 	return (
 		<PageLayout>
-			<SectionArticlesList sectionName="Featured articles" articles={articles.slice(0, 1)} featured/>
-			<SectionArticlesList sectionName="Recent posts" articles={articles}/>
+			{featuredArticles.length > 0
+				? <SectionArticlesList sectionName="Featured articles" articles={featuredArticles} featured/>
+				: null
+			}
+			<SectionArticlesList sectionName="Recent posts" articles={allArticles}/>
 		</PageLayout>
 	);
 };
