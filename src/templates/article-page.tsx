@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import * as React from 'react';
 import PageLayout from '../components/page-layout';
 import { MarkdownMeta } from '../types/markdown-meta';
+import './article-template.scss';
 
 interface ArticlePageProps {
 	data: {
@@ -36,7 +37,7 @@ const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
 		<PageLayout>
 			<article className="post">
 				<h1>{title}</h1>
-				<h3>{headliner}</h3>
+				<h2>{headliner}</h2>
 				<h6>{date}</h6>
 				<img className="featured-image" src={featuredImage} alt={title}/>
 				<div className="post-content" dangerouslySetInnerHTML={{ __html: html }}/>

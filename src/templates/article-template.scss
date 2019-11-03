@@ -1,0 +1,41 @@
+@import "../components/variables";
+
+main article.post {
+	display: grid;
+
+	grid-template: "fimg" "title" "headliner" "date";
+	@media screen and (min-width: $screen-sm-min) { grid-template: "title" "headliner" "date" "fimg"; }
+
+	h1, h2 {
+		font-family: 'Roboto', 'Sarabun', sans-serif;
+	}
+
+	.featured-image {
+		grid-area: fimg;
+		max-height: 300px;
+		max-width: 100%;
+		@media screen and (min-width: $screen-sm-min) { max-height: 400px }
+		@media screen and (min-width: $screen-md-min) { max-height: 500px }
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
+
+	> h1 {
+		grid-area: title;
+		margin-top: 16px;
+		font-size: 32px;
+		font-weight: 600;
+	}
+	> h2 {
+		grid-area: headliner;
+		font-size: 20px;
+		font-weight: 300;
+	}
+	> h6 {
+		grid-area: date;
+		margin-top: 4px;
+		font-size: 14px;
+		font-style: italic;
+		font-weight: 300;
+	}
+}
