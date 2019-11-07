@@ -40,7 +40,7 @@ const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
 				<h2>{headliner}</h2>
 				<h6>{date}</h6>
 				<img className="featured-image" src={featuredImage} alt={title}/>
-				<div className="post-content" dangerouslySetInnerHTML={{ __html: html }}/>
+				<section className="post-content" dangerouslySetInnerHTML={{ __html: html }}/>
 			</article>
 		</PageLayout>
 	);
