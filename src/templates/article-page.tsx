@@ -3,6 +3,7 @@ import * as React from 'react';
 import PageLayout from '../components/page-layout';
 import { MarkdownMeta } from '../types/markdown-meta';
 import './article-template.scss';
+import './code.scss';
 
 interface ArticlePageProps {
 	data: {
