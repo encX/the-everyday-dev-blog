@@ -38,20 +38,27 @@ body {
 #root {
 	display: grid;
 	padding: 0 16px;
-	grid-gap: 32px 0;
+	grid-gap: 16px 0;
 	grid-template:
 			"header"
 			"nav"
 			"main" 1fr
 			"footer";
 
+	@media screen and (min-width: $screen-md-min) {
+		grid-gap: 32px 0;
+	}
+
 	> header { // todo: separate this to its own component and style
 		grid-area: header;
 		font-family: 'Roboto', sans-serif;
-		margin-top: 32px;
+		margin-top: 16px;
 		text-align: center;
 
-		@media screen and (min-width: $screen-md-min) { text-align: left }
+		@media screen and (min-width: $screen-md-min) {
+			text-align: left;
+			margin-top: 32px;
+		}
 
 		h1 {
 			font-weight: 900;

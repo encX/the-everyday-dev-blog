@@ -47,6 +47,7 @@ main article.post {
 	}
 
 	section.post-content {
+		margin-top: 16px;
 		h1, h2, h3, h4, h5, h6 { margin-bottom: 12px }
 		h1 { font-size: 32px }
 		h2 { font-size: 28px }
@@ -68,5 +69,6 @@ main article.post {
 				@media (prefers-color-scheme: dark) { border-color: $light-dim }
 			}
 		}
+		p { line-height: 1.5 }
 	}
 }
