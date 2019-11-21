@@ -6,11 +6,15 @@ const PageLayout: React.FunctionComponent = ({ children }) => {
 	return (
 		<div id="root">
 			<header>
-				<h1>The Everyday Dev</h1>
-				<h4>All the things that true `fullstack` developer should know.</h4>
+				<a href="/">
+					<h1>The Everyday Dev</h1>
+					<h4>All the things that true `fullstack` developer should know.</h4>
+				</a>
 			</header>
 			<nav>
-				Nav items goes here
+				<a href="/all">All articles</a>
+				<a href="/tags">Tags</a>
+				<a href="/about">About</a>
 			</nav>
 			<main>
 				{children}

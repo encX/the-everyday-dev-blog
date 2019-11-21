@@ -38,7 +38,7 @@ body {
 #root {
 	display: grid;
 	padding: 0 16px;
-	grid-gap: 16px 0;
+	grid-gap: 8px 0;
 	grid-template:
 			"header"
 			"nav"
@@ -46,7 +46,7 @@ body {
 			"footer";
 
 	@media screen and (min-width: $screen-md-min) {
-		grid-gap: 32px 0;
+		grid-gap: 16px 0;
 	}
 
 	> header { // todo: separate this to its own component and style
@@ -76,7 +76,37 @@ body {
 		}
 	}
 
-	> nav { grid-area: nav }
+	> nav {
+		grid-area: nav;
+		font-size: 14px;
+		display: flex;
+		justify-content: center;
+
+		@media screen and (min-width: $screen-md-min) {
+			justify-content: flex-start;
+			font-size: 16px;
+		}
+
+		a {
+			border: 1px solid $dark-bright;
+			@media (prefers-color-scheme: dark) { border-color: $light-dim }
+
+			&:hover {
+				background-color: $dark-bright;
+				color: $light;
+
+				@media (prefers-color-scheme: dark) {
+					background-color: $light;
+					color: $dark-bright;
+				}
+			}
+
+			padding: 4px 6px;
+			border-radius: 4px;
+
+			& + a {margin-left: 8px}
+		}
+	}
 	> main { grid-area: main }
 	> footer { grid-area: footer }
 }
