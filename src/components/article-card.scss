@@ -2,36 +2,38 @@
 
 .article-card {
 	border-radius: 6px;
-	overflow: hidden;
 	cursor: pointer;
 	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
 
 	background-color: $lighter;
-	box-shadow: $shadow-normal 5px 5px 15px -10px;
+	@include elevate-1;
+
 	@media (prefers-color-scheme: dark) {
 		background-color: $dark-bright;
-		box-shadow: $shadow-dark 5px 5px 15px -10px;
+	}
+
+	&::after {
+		border-radius: 6px;
+		@include elevate-5;
+		@include shadow-pseudo;
+	}
+
+	&:hover {
+		&::after {
+			opacity: 1
+		}
 	}
 
 	a {
 		height: 100%;
 		width: 100%;
+		border-radius: 6px;
+		overflow: hidden;
 		display: grid;
 		grid-template: "card-image" 1fr "card-title" auto "card-headliner" auto
 		/ 1fr;
-	}
-
-	&:hover {
-		img {
-			grid-area: 1 / 1 / 4 / 2;
-			z-index: 200;
-			opacity: 0.3;
-		}
-
-		h3, h4 {
-			white-space: initial;
-			overflow: visible;
-		}
 	}
 
 	img {
