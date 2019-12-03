@@ -11,7 +11,13 @@ main article.post {
 		font-family: 'Roboto', 'Sarabun', sans-serif;
 	}
 
+	> :not(.featured-image) {
+		@include page-layout-sizing;
+	}
+
 	.featured-image {
+		@include elevate-2;
+
 		grid-area: fimg;
 		max-height: 300px;
 		max-width: 100%;
@@ -29,9 +35,11 @@ main article.post {
 
 	> h1 {
 		grid-area: title;
-		margin-top: 16px;
 		font-size: 32px;
 		font-weight: 600;
+
+		margin-top: 16px;
+		@media screen and (min-width: $screen-sm-min) { margin-top: 0 }
 	}
 	> h2 {
 		grid-area: headliner;

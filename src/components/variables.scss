@@ -37,9 +37,14 @@ $accent-dark: darken($accent, 20%);
 }
 
 @mixin page-layout-sizing {
-	margin: 0 auto;
-	padding: 0 8px;
-	@media screen and (min-width: $screen-xs) {padding: 0 16px;}
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 8px;
+	padding-right: 8px;
+	@media screen and (min-width: $screen-xs) {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
 	width: 100%;
 	max-width: $screen-md-min;
 }

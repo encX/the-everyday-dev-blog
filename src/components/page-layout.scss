@@ -51,24 +51,23 @@ body {
 		grid-gap: 16px 0;
 	}
 
-	> :not(footer) {
-		@include page-layout-sizing;
-	}
-
 	> header { // todo: separate this to its own component and style
+		@include page-layout-sizing;
 		grid-area: header;
 		font-family: 'Roboto', sans-serif;
-		margin-top: 16px;
-		text-align: center;
 
-		@media screen and (min-width: $screen-sm-min) {margin-top: 32px;}
+		margin-top: 16px;
+		@media screen and (min-width: $screen-md-min) {margin-top: 32px;}
+
+		text-align: center;
 		@media screen and (min-width: $screen-md-min) {text-align: left;}
 
 		h1 {
 			font-weight: 900;
 			font-size: 34px;
 
-			@media screen and (min-width: $screen-sm-min) { font-size: 60px }
+			@media screen and (min-width: $screen-sm-min) { font-size: 48px }
+			@media screen and (min-width: $screen-md-min) { font-size: 60px }
 		}
 		h4 {
 			font-weight: 300;
@@ -76,11 +75,13 @@ body {
 			color: $dark-bright;
 
 			@media (prefers-color-scheme: dark) { color: $light-dim }
-			@media screen and (min-width: $screen-sm-min) { font-size: 24px; font-weight: 100 }
+			@media screen and (min-width: $screen-sm-min) { font-size: 20px; font-weight: 100 }
+			@media screen and (min-width: $screen-md-min) { font-size: 24px; font-weight: 100 }
 		}
 	}
 
 	> nav {
+		@include page-layout-sizing;
 		grid-area: nav;
 		font-size: 14px;
 		display: flex;
@@ -93,7 +94,7 @@ body {
 
 		a {
 			border: 1px solid $dark-bright;
-			@media (prefers-color-scheme: dark) { border-color: $light-dim }
+			@media (prefers-color-scheme: dark) { border-color: $light }
 
 			&:hover {
 				background-color: $dark-bright;
@@ -125,6 +126,8 @@ body {
 		grid-area: footer;
 
 		background-color: $dark;
+		@media (prefers-color-scheme: dark) { background-color: $dark-bright }
+
 		color: $light-dim;
 
 		padding: 16px 0;
@@ -136,8 +139,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 { margin: 0 }
 hr {
-	border: none $dark-bright;
-	@media (prefers-color-scheme: dark) { border-color: $light-dim }
-	border-bottom: 1px solid;
+	border: none;
+	border-bottom: 1px solid #888888;
 	margin: 48px 20%;
 }

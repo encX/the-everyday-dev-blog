@@ -43,7 +43,7 @@ const Index: React.FunctionComponent<IndexPageProps> = ({ data }) => {
 	return (
 		<PageLayout>
 			{featuredArticles.length > 0
-				? <><SectionArticlesList sectionName="Featured articles" articles={featuredArticles} featured/><hr/></>
+				? <><SectionArticlesList sectionName="Featured articles" articles={featuredArticles} featured/><section><hr/></section></>
 				: null
 			}
 			<SectionArticlesList sectionName="Recent posts" articles={allArticles}/>
