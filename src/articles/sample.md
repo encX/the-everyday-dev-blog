@@ -152,3 +152,11 @@ Asterisks
 ___
 
 Underscores
+
+---
+
+[[ppic | Morbi ornare felis sapien, quis sollicitudin nunc lobortis nec. Nulla scelerisque, est non commodo lacinia, ante lorem aliquam ex, sagittis pretium libero felis quis lacus. Praesent elementum dolor leo, ac rhoncus lacus euismod non.]]
+| ![a](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg)
+
+[[ppic-rev | Morbi ornare felis sapien, quis sollicitudin nunc lobortis nec. Nulla scelerisque, est non commodo lacinia, ante lorem aliquam ex, sagittis pretium libero felis quis lacus. Praesent elementum dolor leo, ac rhoncus lacus euismod non.]]
+| ![a](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/San_Lorenzo_desde_El_hombre.jpg/1280px-San_Lorenzo_desde_El_hombre.jpg)

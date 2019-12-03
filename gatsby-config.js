@@ -26,20 +26,27 @@ module.exports = {
 					{
 						resolve: 'gatsby-remark-prismjs',
 					},
-					// {
-					// 	resolve: 'gatsby-remark-images',
-					// 	options: {
-					// 		// todo: customie stying
-					// 	},
-					// },
-					// {
-					// 	resolve: 'gatsby-remark-custom-blocks',
-					// 	options: {
-					// 		blocks: {
-					// 			// todo: customize blocks
-					// 		},
-					// 	},
-					// },
+					{
+						resolve: 'gatsby-remark-images',
+						options: {
+							maxWidth: 992,
+						},
+					},
+					{
+						resolve: 'gatsby-remark-custom-blocks',
+						options: {
+							blocks: {
+								ppic: {
+									classes: 'ppic',
+									title: 'optional',
+								},
+								'ppic-rev': {
+									classes: 'ppic reverse',
+									title: 'optional',
+								},
+							},
+						},
+					},
 				],
 			},
 		},

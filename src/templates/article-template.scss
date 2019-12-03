@@ -77,6 +77,34 @@ main article.post {
 				@media (prefers-color-scheme: dark) { border-color: $light-dim }
 			}
 		}
-		p { line-height: 1.5 }
+		> p { line-height: 1.5 }
+	}
+}
+
+.custom-block {
+	&.ppic {
+		display: grid;
+		align-items: center;
+		justify-items: center;
+
+		grid-template: "ppic-image" "ppic-text" / 1fr;
+		grid-gap: 0;
+		@media screen and (min-width: $screen-sm-min) {
+			grid-template: "ppic-text ppic-image" / 5fr 3fr;
+			&.reverse {grid-template: "ppic-image ppic-text" / 3fr 5fr;}
+			grid-gap: 16px;
+		}
+
+		.custom-block-heading {
+			grid-area: ppic-text;
+		}
+
+		.custom-block-body {
+			grid-area: ppic-image;
+			img {
+				max-width: 100%;
+				max-height: 200px;
+			}
+		}
 	}
 }
