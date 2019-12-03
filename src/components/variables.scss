@@ -35,3 +35,11 @@ $accent-dark: darken($accent, 20%);
 	opacity: 0;
 	transition: opacity 0.15s ease-in-out;
 }
+
+@mixin page-layout-sizing {
+	margin: 0 auto;
+	padding: 0 8px;
+	@media screen and (min-width: $screen-xs) {padding: 0 16px;}
+	width: 100%;
+	max-width: $screen-md-min;
+}

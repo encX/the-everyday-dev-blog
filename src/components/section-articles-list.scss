@@ -5,12 +5,12 @@
 	grid-gap: 16px;
 
 	grid-template: "article-section-title" / 1fr;
-	@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
-	@media screen and (min-width: $screen-md-min) { grid-template: "article-section-title article-section-title article-section-title" / 1fr 1fr 1fr; }
+	@media screen and (min-width: $screen-xs) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
+	@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title article-section-title article-section-title" / 1fr 1fr 1fr; }
 
 	&.featured {
-		@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title" / 1fr; }
-		@media screen and (min-width: $screen-md-min) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
+		grid-template: "article-section-title" / 1fr;
+		@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
 		> article { height: 350px }
 	}
 
@@ -24,6 +24,9 @@
 
 		font-size: 20px;
 		@media screen and (min-width: $screen-sm-min) { font-size: 24px; }
+
+		justify-self: center;
+		@media screen and (min-width: $screen-md-min) { justify-self: left; }
 
 		background-color: $dark;
 		color: $lighter;

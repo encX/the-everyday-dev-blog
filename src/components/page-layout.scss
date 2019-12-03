@@ -6,6 +6,10 @@
 // 2. expand with grid
 // 3. if browser doesn't support grid; fallback to mobile
 
+* {
+	box-sizing: border-box;
+}
+
 html {
 	height: 100%;
 	font-family: 'Sarabun', sans-serif;
@@ -30,14 +34,12 @@ body,
 }
 
 body {
-	max-width: $screen-lg-min;
 	min-width: 320px;
-	margin: 0 auto;
+	margin: 0;
 }
 
 #root {
 	display: grid;
-	padding: 0 16px;
 	grid-gap: 8px 0;
 	grid-template:
 			"header"
@@ -49,16 +51,18 @@ body {
 		grid-gap: 16px 0;
 	}
 
+	> :not(footer) {
+		@include page-layout-sizing;
+	}
+
 	> header { // todo: separate this to its own component and style
 		grid-area: header;
 		font-family: 'Roboto', sans-serif;
 		margin-top: 16px;
 		text-align: center;
 
-		@media screen and (min-width: $screen-md-min) {
-			text-align: left;
-			margin-top: 32px;
-		}
+		@media screen and (min-width: $screen-sm-min) {margin-top: 32px;}
+		@media screen and (min-width: $screen-md-min) {text-align: left;}
 
 		h1 {
 			font-weight: 900;
@@ -107,8 +111,27 @@ body {
 			& + a {margin-left: 8px}
 		}
 	}
-	> main { grid-area: main }
-	> footer { grid-area: footer }
+	> main {
+		grid-area: main;
+
+		margin-top: 16px;
+		margin-bottom: 16px;
+
+		@media screen and (min-width: $screen-sm-min) {
+			margin-bottom: 32px;
+		}
+	}
+	> footer {
+		grid-area: footer;
+
+		background-color: $dark;
+		color: $light-dim;
+
+		padding: 16px 0;
+		font-size: 16px;
+
+		section.content {@include page-layout-sizing}
+	}
 }
 
 h1, h2, h3, h4, h5, h6 { margin: 0 }

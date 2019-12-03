@@ -20,7 +20,9 @@ const PageLayout: React.FunctionComponent = ({ children }) => {
 				{children}
 			</main>
 			<footer>
-				Footer goes here
+				<section className="content">
+					Footer goes here
+				</section>
 			</footer>
 		</div>
 	);
