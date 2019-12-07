@@ -16,7 +16,7 @@ main article.post {
 	}
 
 	.featured-image {
-		@include elevate-2;
+		@include elevate-3;
 
 		grid-area: fimg;
 		max-height: 300px;
@@ -54,6 +54,11 @@ main article.post {
 		font-weight: 300;
 	}
 
+	> h1, > h2, > h6 {
+		@media screen and (min-width: $screen-sm-min) { text-align: center }
+		@media screen and (min-width: $screen-md-min) { text-align: initial }
+	}
+
 	section.post-content {
 		margin-top: 16px;
 		h1, h2, h3, h4, h5, h6 { margin-bottom: 12px }
@@ -86,12 +91,13 @@ main article.post {
 		display: grid;
 		align-items: center;
 		justify-items: center;
+		margin: 2em 0;
 
 		grid-template: "ppic-image" "ppic-text" / 1fr;
 		grid-gap: 0;
 		@media screen and (min-width: $screen-sm-min) {
-			grid-template: "ppic-text ppic-image" / 5fr 3fr;
-			&.reverse {grid-template: "ppic-image ppic-text" / 3fr 5fr;}
+			grid-template: "ppic-text ppic-image" / 5fr 4fr;
+			&.reverse {grid-template: "ppic-image ppic-text" / 4fr 5fr;}
 			grid-gap: 16px;
 		}
 
@@ -105,6 +111,8 @@ main article.post {
 				max-width: 100%;
 				max-height: 200px;
 			}
+
+			p { margin: 8px 0 }
 		}
 	}
 }
