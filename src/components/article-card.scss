@@ -1,9 +1,6 @@
 @import "./variables.scss";
 
 .article-card {
-	border-radius: 6px;
-	cursor: pointer;
-	box-sizing: border-box;
 	position: relative;
 	display: inline-block;
 
@@ -15,7 +12,6 @@
 	}
 
 	&::after {
-		border-radius: 6px;
 		@include elevate-5;
 		@include shadow-pseudo;
 	}
@@ -26,21 +22,25 @@
 		}
 	}
 
-	a {
+	a { // link
 		height: 100%;
 		width: 100%;
-		border-radius: 6px;
-		overflow: hidden;
-		display: grid;
-		grid-template: "card-image" 1fr "card-title" auto "card-headliner" auto
-		/ 1fr;
+		display: block;
 	}
 
 	img {
-		grid-area: card-image;
+		position: absolute;
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
+	}
+
+	.article-card__text {
+		position: absolute;
+		bottom: 0;
+		background-color: #FFFD;
+		@media (prefers-color-scheme: dark) { background-color: #222C; }
+		width: 100%;
 	}
 
 	h3, h4 {

@@ -7,8 +7,10 @@ const ArticleCard: React.FunctionComponent<MarkdownMeta> = ({ title, headliner, 
 	<article className="article-card">
 		<Link to={path}>
 			<img src={featuredImage} alt="Featured image" />
-			<h3>{title}</h3>
-			<h4>{headliner}</h4>
+			<div className="article-card__text">
+				<h3>{title}</h3>
+				<h4>{headliner}</h4>
+			</div>
 		</Link>
 	</article>
 );
