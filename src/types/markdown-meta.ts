@@ -3,7 +3,11 @@ export interface MarkdownMeta {
 	path: string;
 	title: string;
 	headliner: string;
-	featuredImage: string;
+	featuredImage: {
+		childImageSharp: {
+			fluid: any;
+		};
+	};
 	featured?: boolean;
 	tags: [string];
 }

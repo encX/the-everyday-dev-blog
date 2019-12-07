@@ -16,7 +16,13 @@ export const pageQuery = graphql`
             path
             title
             headliner
-            featuredImage
+            featuredImage {
+            	childImageSharp {
+					fluid(maxWidth: 800) {
+						...GatsbyImageSharpFluid
+					}
+				}
+            }
             featured
           }
         }

@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import * as React from 'react';
 import PageLayout from '../components/page-layout';
 import { MarkdownMeta } from '../types/markdown-meta';
@@ -23,7 +24,13 @@ query article($path: String!) {
 			path
 			headliner
 			title
-			featuredImage
+			featuredImage {
+				childImageSharp {
+					fluid(maxWidth: 800) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
       	}
     }
 }
@@ -40,7 +47,7 @@ const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
 				<h1>{title}</h1>
 				<h2>{headliner}</h2>
 				<h6>{date}</h6>
-				<img className="featured-image" src={featuredImage} alt={title}/>
+				<Img className="featured-image" fluid={featuredImage.childImageSharp.fluid}/>
 				<section className="post-content" dangerouslySetInnerHTML={{ __html: html }}/>
 			</article>
 		</PageLayout>

@@ -20,16 +20,14 @@ main article.post {
 
 		grid-area: fimg;
 		max-height: 300px;
-		max-width: 100%;
 		@media screen and (min-width: $screen-sm-min) {
 			max-height: 400px;
-			margin: 16px auto;
+			margin-top: 16px;
+			@include page-layout-sizing;
 		}
 		@media screen and (min-width: $screen-md-min) {
-			max-height: 500px;
-			margin: 32px auto;
+			max-width: 700px;
 		}
-		margin: 0 auto;
 		box-sizing: border-box;
 	}
 
