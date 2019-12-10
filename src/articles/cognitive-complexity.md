@@ -5,7 +5,7 @@ featured: true
 featuredImage: ../images/cognitive-complexity-feature.png 
 path: "/a/cognitive-complexity"  
 date: "2019-12-08"  
-tag: ["code-quality", "programming"]
+tags: ["code-quality", "programming"]
 ---
 
 กดเนากนดเากนดเากนดาเ

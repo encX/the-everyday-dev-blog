@@ -1,7 +1,11 @@
 import * as React from 'react';
 import './page-layout.scss';
 
-const PageLayout: React.FunctionComponent = ({ children }) => {
+interface PageLayoutProps {
+	mainId?: string;
+}
+
+const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId }) => {
 	// SEO ?
 	return (
 		<div id="root">
@@ -13,10 +17,9 @@ const PageLayout: React.FunctionComponent = ({ children }) => {
 			</header>
 			<nav>
 				<a href="/all">All articles</a>
-				<a href="/tags">Tags</a>
 				<a href="/about">About</a>
 			</nav>
-			<main>
+			<main id={mainId}>
 				{children}
 			</main>
 			<footer>

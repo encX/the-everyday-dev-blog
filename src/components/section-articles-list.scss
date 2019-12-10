@@ -1,12 +1,6 @@
 @import "./variables.scss";
 
-.articles + section {
-	@include page-layout-sizing;
-}
-
-.articles {
-	@include page-layout-sizing;
-
+section.articles {
 	display: grid;
 	grid-gap: 16px;
 
@@ -21,30 +15,7 @@
 	}
 
 	> h2 {
-		font-family: 'Roboto', sans-serif;
-		text-transform: uppercase;
 		grid-area: article-section-title;
-		width: fit-content;
-		padding: 5px 8px 3px 8px;
-		border: 0;
-
-		font-size: 20px;
-		@media screen and (min-width: $screen-sm-min) { font-size: 24px; }
-
-		justify-self: center;
-		@media screen and (min-width: $screen-md-min) { justify-self: left; }
-
-		background-color: $dark;
-		color: $lighter;
-		@media (prefers-color-scheme: dark) {
-			background-color: $lighter;
-			color: $darker;
-		}
 	}
 	> article { height: 300px }
-}
-
-.articles + .articles {
-	margin-top: 16px;
-	padding-top: 16px;
 }

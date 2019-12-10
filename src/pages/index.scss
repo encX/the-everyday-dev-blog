@@ -1,0 +1,30 @@
+@import "../components/variables";
+
+main {
+	> section {
+		@include page-layout-sizing;
+
+		> h2 {
+			@include elevate-1;
+
+			font-family: 'Roboto', sans-serif;
+			text-transform: uppercase;
+			width: fit-content;
+			padding: 5px 8px 3px 8px;
+			border: 0;
+
+			font-size: 20px;
+			@media screen and (min-width: $screen-sm-min) { font-size: 24px; }
+
+			justify-self: center;
+			@media screen and (min-width: $screen-md-min) { justify-self: left; }
+
+			background-color: $dark;
+			color: $lighter;
+			@media (prefers-color-scheme: dark) {
+				background-color: $lighter;
+				color: $darker;
+			}
+		}
+	}
+}
