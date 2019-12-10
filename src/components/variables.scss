@@ -43,7 +43,7 @@ $accent-dark: darken($accent, 20%);
 
 	padding-right: calc(env(safe-area-inset-right) + 8px);
 	padding-left: calc(env(safe-area-inset-left) + 8px);
-	@media screen and (min-width: $screen-xs) {
+	@media screen and (min-width: $screen-sm-min) {
 		padding-right: calc(env(safe-area-inset-right) + 16px);
 		padding-left: calc(env(safe-area-inset-left) + 16px);
 	}
