@@ -59,6 +59,8 @@ body {
 		margin-top: 16px;
 		@media screen and (min-width: $screen-md-min) {margin-top: 32px;}
 
+		padding-top: env(safe-area-inset-top);
+
 		text-align: center;
 		@media screen and (min-width: $screen-md-min) {text-align: left;}
 
@@ -132,7 +134,10 @@ body {
 		padding: 16px 0;
 		font-size: 16px;
 
-		section.content {@include page-layout-sizing}
+		section.content {
+			@include page-layout-sizing;
+			padding-bottom: env(safe-area-inset-bottom);
+		}
 	}
 }
 
