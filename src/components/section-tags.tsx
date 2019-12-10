@@ -3,12 +3,13 @@ import './section-tags.scss';
 import Tag from './tag';
 
 interface SectionTagsProps {
-	tags: string[];
+	hideHeader?: boolean;
+ 	tags: string[];
 }
 
-const SectionTags: React.FunctionComponent<SectionTagsProps> = ({ tags }) => (
+const SectionTags: React.FunctionComponent<SectionTagsProps> = ({ tags, hideHeader }) => (
 	<section className="tags">
-		<h2>Tags</h2>
+		{!hideHeader && <h2>Tags</h2>}
 		<div className="tags-list">
 			{tags.map(tag => <Tag name={tag} key={tag}/>)}
 		</div>

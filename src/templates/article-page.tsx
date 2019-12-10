@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import * as React from 'react';
 import PageLayout from '../components/page-layout';
+import SectionTags from '../components/section-tags';
 import { MarkdownMeta } from '../types/markdown-meta';
 import './article-template.scss';
 import './code.scss';
@@ -31,6 +32,7 @@ query article($path: String!) {
 					}
 				}
 			}
+			tags
       	}
     }
 }
@@ -39,7 +41,7 @@ query article($path: String!) {
 const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
-	const { title, date, featuredImage, headliner } = frontmatter;
+	const { title, date, featuredImage, headliner, tags } = frontmatter;
 	
 	return (
 		<PageLayout>
@@ -49,6 +51,7 @@ const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
 				<h6>{date}</h6>
 				<Img className="featured-image" fluid={featuredImage.childImageSharp.fluid}/>
 				<section className="post-content" dangerouslySetInnerHTML={{ __html: html }}/>
+				<SectionTags tags={tags} hideHeader={true}/>
 			</article>
 		</PageLayout>
 	);
