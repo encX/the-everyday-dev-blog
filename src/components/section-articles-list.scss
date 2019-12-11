@@ -11,11 +11,19 @@ section.articles {
 	&.featured {
 		grid-template: "article-section-title" / 1fr;
 		@media screen and (min-width: $screen-sm-min) { grid-template: "article-section-title article-section-title" / 1fr 1fr; }
-		> article { height: 350px }
+		> article {
+			height: 225px;
+			@media screen and (min-width: $screen-xs) { height: 280px }
+			@media screen and (min-width: $screen-md-min) { height: 350px }
+		}
 	}
 
 	> h2 {
 		grid-area: article-section-title;
 	}
-	> article { height: 300px }
+	> article {
+		height: 200px;
+		@media screen and (min-width: $screen-xs) { height: 260px }
+		@media screen and (min-width: $screen-md-min) { height: 300px }
+	}
 }

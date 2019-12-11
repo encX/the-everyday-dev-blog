@@ -95,15 +95,19 @@ body {
 		}
 
 		a {
-			border: 1px solid $dark-bright;
-			@media (prefers-color-scheme: dark) { border-color: $light }
+			border: 1px solid $accent-dark;
+			color: $accent-dark;
+			@media (prefers-color-scheme: dark) {
+				border-color: $accent-light;
+				color: $accent-light;
+			}
 
 			&:hover {
-				background-color: $dark-bright;
+				background-color: $accent-dark;
 				color: $light;
 
 				@media (prefers-color-scheme: dark) {
-					background-color: $light;
+					background-color: $accent-light;
 					color: $dark-bright;
 				}
 			}

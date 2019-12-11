@@ -19,10 +19,10 @@ main {
 			justify-self: center;
 			@media screen and (min-width: $screen-md-min) { justify-self: left; }
 
-			background-color: $dark;
+			background-color: $accent-dark;
 			color: $lighter;
 			@media (prefers-color-scheme: dark) {
-				background-color: $lighter;
+				background-color: $accent-light;
 				color: $darker;
 			}
 		}
