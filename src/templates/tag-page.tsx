@@ -41,10 +41,11 @@ query TagPage($tag: String!) {
 const TagPage: React.FunctionComponent<TagPageProps> = ({ data, pageContext }) => {
 	const { allMarkdownRemark } = data;
 	const allArticles = allMarkdownRemark.nodes.map(node => node.frontmatter);
+	const tagTitle = `# ${pageContext.tag}`;
 	
 	return (
-		<PageLayout>
-			<SectionArticlesList sectionName={`#${pageContext.tag}`} articles={allArticles}/>
+		<PageLayout customPageTitle={tagTitle}>
+			<SectionArticlesList sectionName={tagTitle} articles={allArticles}/>
 		</PageLayout>
 	);
 };
