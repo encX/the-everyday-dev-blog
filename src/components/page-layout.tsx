@@ -22,7 +22,7 @@ const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId
 	const { title, description } = site.siteMetadata;
 	
 	const pageTitle = customPageTitle
-		? `${customPageTitle} - ${title}`
+		? `${customPageTitle} | ${title}`
 		: `${title} - ${description}`;
 	
 	return (
