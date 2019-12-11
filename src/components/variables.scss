@@ -36,6 +36,22 @@ $accent-dark: darken($accent, 20%);
 	transition: opacity 0.15s ease-in-out;
 }
 
+@mixin hover-elevate {
+	position: relative;
+
+	&::after {
+		@include elevate-5;
+		@include shadow-pseudo;
+	}
+
+	&:hover {
+		box-shadow: none;
+		&::after {
+			opacity: 1
+		}
+	}
+}
+
 //noinspection CssInvalidFunction
 @mixin page-layout-sizing {
 	margin-left: auto;

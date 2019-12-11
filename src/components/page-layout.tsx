@@ -5,9 +5,10 @@ import Metadata from './site-meta';
 
 interface PageLayoutProps {
 	mainId?: string;
+	customPageTitle?: string;
 }
 
-const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId }) => {
+const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId, customPageTitle }) => {
 	const { site } = useStaticQuery(graphql`
 		query {
 			site {
@@ -20,9 +21,13 @@ const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId
 	`);
 	const { title, description } = site.siteMetadata;
 	
+	const pageTitle = customPageTitle
+		? `${customPageTitle} - ${title}`
+		: `${title} - ${description}`;
+	
 	return (
 		<>
-			<Metadata/>
+			<Metadata pageTitle={pageTitle}/>
 			<div id="root">
 				<header>
 					<a href="/">

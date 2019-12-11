@@ -11,6 +11,7 @@ div.tag {
 	@media screen and (min-width: $screen-sm-min) { font-size: 20px; }
 
 	@include elevate-1;
+	@include hover-elevate;
 
 	background-color: $lighter;
 	@media (prefers-color-scheme: dark) {

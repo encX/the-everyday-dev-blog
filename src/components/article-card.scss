@@ -6,20 +6,10 @@
 
 	background-color: $lighter;
 	@include elevate-1;
+	@include hover-elevate;
 
 	@media (prefers-color-scheme: dark) {
 		background-color: $dark-bright;
-	}
-
-	&::after {
-		@include elevate-5;
-		@include shadow-pseudo;
-	}
-
-	&:hover {
-		&::after {
-			opacity: 1
-		}
 	}
 
 	a { // link

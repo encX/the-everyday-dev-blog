@@ -44,7 +44,7 @@ const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
 	const { title, date, featuredImage, headliner, tags } = frontmatter;
 	
 	return (
-		<PageLayout>
+		<PageLayout customPageTitle={title}>
 			<article className="post">
 				<h1>{title}</h1>
 				<h2>{headliner}</h2>
