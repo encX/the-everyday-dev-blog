@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import './page-layout.scss';
 import Metadata from './site-meta';
@@ -7,15 +8,26 @@ interface PageLayoutProps {
 }
 
 const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId }) => {
-	// SEO ?
+	const { site } = useStaticQuery(graphql`
+		query {
+			site {
+				siteMetadata {
+					title
+					description
+				}
+			}
+		}
+	`);
+	const { title, description } = site.siteMetadata;
+	
 	return (
 		<>
 			<Metadata/>
 			<div id="root">
 				<header>
 					<a href="/">
-						<h1>The Everyday Dev</h1>
-						<h4>All the things that true `fullstack` developer should know.</h4>
+						<h1>{title}</h1>
+						<h4>{description}</h4>
 					</a>
 				</header>
 				<nav>
