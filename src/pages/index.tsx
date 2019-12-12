@@ -59,7 +59,9 @@ const getTagsOrder = (tagList: string[]): string[] => {
 	Object.keys(tagObj).forEach(tag => tagRepo.push({ name: tag, count: tagObj[tag] }));
 	
 	return tagRepo
-		.sort((a: TagObjRepo, b: TagObjRepo): number => a.count > b.count ? 1 : -1)
+		.sort((a: TagObjRepo, b: TagObjRepo): number =>
+			a.count > b.count ? 1 : (a.count < b.count ? -1 : (a.name > b.name ? 1 : -1))
+		)
 		.map(tag => tag.name);
 };
 
