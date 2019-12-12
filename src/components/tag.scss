@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "common";
 
 div.tag {
 	display: inline-flex;
@@ -7,7 +7,8 @@ div.tag {
 	text-transform: uppercase;
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-	font-weight: 300;
+	font-weight: 500;
+	span:first-child { font-weight: 300 }
 	@media screen and (min-width: $screen-sm-min) { font-size: 20px; }
 
 	@include elevate-1;
