@@ -1,0 +1,10 @@
+section#text-content {
+	white-space: unset;
+	text-align: justify;
+	line-height: 1.2;
+
+	> p {
+		&:first-child {margin-top: 0}
+		&:last-child {margin-bottom: 0}
+	}
+}

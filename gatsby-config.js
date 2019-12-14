@@ -46,6 +46,13 @@ module.exports = {
 				path: `${__dirname}/src/images`,
 			},
 		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'license',
+				path: `${__dirname}/LICENSE`,
+			},
+		},
 		'gatsby-plugin-typescript',
 		'gatsby-plugin-sass',
 		'gatsby-plugin-netlify',

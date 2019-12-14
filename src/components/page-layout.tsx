@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import './page-layout.scss';
+import Footer from './footer';
 import Metadata from './site-meta';
 
 interface PageLayoutProps {
@@ -42,11 +43,7 @@ const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId
 				<main id={mainId}>
 					{children}
 				</main>
-				<footer>
-					<section className="content">
-					Footer goes here
-					</section>
-				</footer>
+				<Footer/>
 			</div>
 		</>
 	);

@@ -140,6 +140,9 @@ body {
 			@include page-layout-sizing;
 			padding-bottom: env(safe-area-inset-bottom);
 		}
+
+		// Undo global color
+		a {color: $light}
 	}
 }
 

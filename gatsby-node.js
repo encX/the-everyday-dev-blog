@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
 	const { createPage } = actions;
@@ -42,5 +43,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 				tag,
 			}, // additional data can be passed via context
 		});
+	});
+
+	const textPageTemplate = path.resolve('src/templates/text-page.tsx');
+	const licensePageContent = fs.readFileSync(path.resolve('LICENSE'));
+	createPage({
+		path: '/license',
+		component: textPageTemplate,
+		context: {
+			text: licensePageContent.toString(),
+		},
 	});
 };
