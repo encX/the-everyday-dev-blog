@@ -37,6 +37,7 @@ const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId
 					</a>
 				</header>
 				<nav>
+					<a href="/">Home</a>
 					<a href="/all">All articles</a>
 					<a href="/about">About</a>
 				</nav>

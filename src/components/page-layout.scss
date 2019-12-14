@@ -11,7 +11,7 @@
 html {
 	height: 100%;
 	font-family: 'Sarabun', sans-serif;
-	font-size: 20px;
+	@include reading-fontsize;
 
 	background-color: $light;
 	@media (prefers-color-scheme: dark) {background-color: $dark;}
@@ -29,6 +29,11 @@ body,
 #gatsby-focus-wrapper,
 #root {
 	min-height: 100vh;
+
+	text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
 }
 
 body {
@@ -86,6 +91,8 @@ body {
 		font-size: 14px;
 		display: flex;
 		justify-content: center;
+		flex-flow: row wrap;
+		align-content: space-between;
 
 		@media screen and (min-width: $screen-md-min) {
 			justify-content: flex-start;
@@ -94,6 +101,12 @@ body {
 
 		a {
 			border: 1px solid $accent-dark;
+			padding: 4px 6px;
+
+			& + a {
+				margin-left: 8px;
+			}
+
 			color: $accent-dark;
 			@media (prefers-color-scheme: dark) {
 				border-color: $accent-light;
@@ -110,20 +123,16 @@ body {
 				}
 			}
 
-			padding: 4px 6px;
-
-			& + a {margin-left: 8px}
 		}
 	}
 	> main {
 		grid-area: main;
 
-		margin-top: 16px;
+		margin-top: 2px;
 		margin-bottom: 16px;
 
-		@media screen and (min-width: $screen-sm-min) {
-			margin-bottom: 32px;
-		}
+		@media screen and (min-width: $screen-sm-min) {margin-top: 4px}
+		@media screen and (min-width: $screen-md-min) {margin-top: 6px}
 	}
 	> footer {
 		grid-area: footer;

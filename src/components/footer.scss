@@ -4,6 +4,7 @@ footer {
 	> .content {
 		display: grid;
 		grid-gap: 8px;
+
 		grid-template: "footer-license" "footer-company";
 		@media screen and (min-width: $screen-sm-min) {
 			grid-template: "footer-company footer-license";
@@ -14,8 +15,9 @@ footer {
 		#license { grid-area: footer-license }
 		#company { grid-area: footer-company }
 
-		> h6 {
+		h6 {
 			font-size: 14px;
+			@media screen and (min-width: $screen-md-min) { font-size: 14px; }
 			font-weight: 300;
 			font-family: 'Roboto', sans-serif;
 		}
