@@ -7,10 +7,6 @@ main article.post {
 	grid-template: "fimg" "title" "headliner" "date";
 	@media screen and (min-width: $screen-sm-min) { grid-template: "title" "headliner" "date" "fimg"; }
 
-	h1, h2 {
-		font-family: 'Roboto', 'Sarabun', sans-serif;
-	}
-
 	> :not(.featured-image) {
 		@include page-layout-sizing;
 	}

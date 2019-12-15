@@ -10,11 +10,12 @@
 
 html {
 	height: 100%;
-	font-family: 'Sarabun', sans-serif;
+	font-family: 'Roboto', 'Sarabun', sans-serif;
+	font-weight: 300;
 	@include reading-fontsize;
 
 	background-color: $light;
-	@media (prefers-color-scheme: dark) {background-color: $dark;}
+	@media (prefers-color-scheme: dark) {background-color: $dark}
 }
 
 html, a {
@@ -54,10 +55,9 @@ body {
 		grid-gap: 16px 0;
 	}
 
-	> header { // todo: separate this to its own component and style
+	> header {
 		@include page-layout-sizing;
 		grid-area: header;
-		font-family: 'Roboto', sans-serif;
 
 		margin-top: 16px;
 		@media screen and (min-width: $screen-md-min) {margin-top: 32px;}
@@ -101,7 +101,7 @@ body {
 
 		a {
 			border: 1px solid $accent-dark;
-			padding: 4px 6px;
+			padding: 6px 6px 4px 6px;
 
 			& + a {
 				margin-left: 8px;
@@ -128,10 +128,9 @@ body {
 	> main {
 		grid-area: main;
 
-		margin-top: 2px;
 		margin-bottom: 16px;
 
-		@media screen and (min-width: $screen-sm-min) {margin-top: 4px}
+		margin-top: 16px;
 		@media screen and (min-width: $screen-md-min) {margin-top: 6px}
 	}
 	> footer {
