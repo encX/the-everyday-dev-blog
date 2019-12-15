@@ -1,6 +1,6 @@
 ---
 title: "Cognitive complexity"  
-headliner: "เมื่อการอ่านโค๊ตคนอื่นเป็นเรื่องจำเป็น"  
+headliner: "เมื่อการอ่าน code ของคนอื่นเป็นเรื่องจำเป็น"  
 featured: true  
 featuredImage: ../images/cognitive-complexity-feature.png 
 path: "/cognitive-complexity"  
