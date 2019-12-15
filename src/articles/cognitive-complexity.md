@@ -8,4 +8,3 @@ date: "2019-12-08"
 tags: ["code-quality", "programming"]
 ---
 
-ยังไม่ได้เขียนเนื้อหา
