@@ -55,6 +55,7 @@ module.exports = {
 		},
 		'gatsby-plugin-typescript',
 		'gatsby-plugin-sass',
+		'gatsby-plugin-no-sourcemaps',
 		'gatsby-plugin-netlify',
 	],
 };
