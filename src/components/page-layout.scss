@@ -117,8 +117,11 @@ body {
 				background-color: $accent-dark;
 				color: $light;
 
+				&:active { background-color: $accent-darker }
+
 				@media (prefers-color-scheme: dark) {
 					background-color: $accent-light;
+					&:active { background-color: $accent }
 					color: $dark-bright;
 				}
 			}
