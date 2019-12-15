@@ -1,3 +1,5 @@
+const { GOOGLE_ANALYTICS_TRACKING_ID } = process.env;
+
 module.exports = {
 	siteMetadata: {
 		title: 'The Everyday Dev',
@@ -54,6 +56,13 @@ module.exports = {
 			},
 		},
 		'gatsby-plugin-typescript',
+		{
+			resolve: 'gatsby-plugin-google-analytics',
+			options: {
+				trackingId: GOOGLE_ANALYTICS_TRACKING_ID,
+				head: true,
+			},
+		},
 		'gatsby-plugin-sass',
 		'gatsby-plugin-no-sourcemaps',
 		'gatsby-plugin-netlify',
