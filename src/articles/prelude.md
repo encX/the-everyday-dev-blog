@@ -2,7 +2,7 @@
 title: "Prelude"
 headliner: "The beginning of next chapter"  
 featured: false
-featuredImage: ../images/prelude-featured.jpg 
+featuredImage: ../images/prelude-feature.jpg 
 path: "/prelude"  
 date: "2019-12-15"
 tags: ["message-to-audience"]
