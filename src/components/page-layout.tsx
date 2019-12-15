@@ -32,10 +32,10 @@ const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId
 			<Metadata pageTitle={pageTitle} description={customPageDescription || siteDescription}/>
 			<div id="root">
 				<header>
-					<a href="/">
+					<Link to="/">
 						<h1>{title}</h1>
 						<h4>{siteDescription}</h4>
-					</a>
+					</Link>
 				</header>
 				<nav>
 					<Link to="/" activeClassName="active">Home</Link>
