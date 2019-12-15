@@ -9,12 +9,6 @@ interface PageLayoutProps {
 	customPageTitle?: string;
 }
 
-// interface navLink {
-//
-// }
-//
-// const navLinks
-
 const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId, customPageTitle }) => {
 	const { site } = useStaticQuery(graphql`
 		query {
