@@ -113,7 +113,7 @@ body {
 				color: $accent-light;
 			}
 
-			&:hover {
+			&:hover, &.active {
 				background-color: $accent-dark;
 				color: $light;
 

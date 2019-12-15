@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import * as React from 'react';
 import './page-layout.scss';
 import Footer from './footer';
@@ -8,6 +8,12 @@ interface PageLayoutProps {
 	mainId?: string;
 	customPageTitle?: string;
 }
+
+// interface navLink {
+//
+// }
+//
+// const navLinks
 
 const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId, customPageTitle }) => {
 	const { site } = useStaticQuery(graphql`
@@ -37,7 +43,7 @@ const PageLayout: React.FunctionComponent<PageLayoutProps> = ({ children, mainId
 					</a>
 				</header>
 				<nav>
-					<a href="/">Home</a>
+					<Link to="/" activeClassName="active">Home</Link>
 				</nav>
 				<main id={mainId}>
 					{children}

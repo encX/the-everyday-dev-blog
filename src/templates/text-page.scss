@@ -4,6 +4,7 @@ section#text-content {
 	white-space: unset;
 	text-align: justify;
 	line-height: 1.2;
+	font-family: 'Fira Code', monospace;
 
 	> p {
 		&:first-child {margin-top: 0}
