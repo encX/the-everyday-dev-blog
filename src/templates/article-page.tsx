@@ -44,12 +44,16 @@ const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
 	const { title, date, featuredImage, headliner, tags } = frontmatter;
 	
 	return (
-		<PageLayout customPageTitle={title}>
+		<PageLayout customPageTitle={title} customPageDescription={headliner}>
 			<article className="post">
 				<h1>{title}</h1>
 				<h2>{headliner}</h2>
 				<h6>{date}</h6>
-				<Img className="featured-image" fluid={featuredImage.childImageSharp.fluid}/>
+				{
+					featuredImage
+						? <Img className="featured-image" fluid={featuredImage.childImageSharp.fluid}/>
+						: null
+				}
 				<section className="post-content" dangerouslySetInnerHTML={{ __html: html }}/>
 				<SectionTags tags={tags} hideHeader={true}/>
 			</article>

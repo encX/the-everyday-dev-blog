@@ -68,6 +68,7 @@ const getTagsOrder = (tagList: string[]): string[] => {
 const Index: React.FunctionComponent<IndexPageProps> = ({ data }) => {
 	const allArticles = data.allMarkdownRemark.edges.map(edge => edge.node.frontmatter);
 	const featuredArticles = allArticles.filter(article => article.featured);
+	const nonFeaturedArticle = allArticles.filter(article => !article.featured);
 	
 	const allTags = allArticles.flatMap(article => article.tags);
 	const orderedTags = getTagsOrder(allTags);
@@ -78,8 +79,10 @@ const Index: React.FunctionComponent<IndexPageProps> = ({ data }) => {
 				? <><SectionArticlesList sectionName="Featured articles" articles={featuredArticles} featured/><section><hr/></section></>
 				: null
 			}
-			<SectionArticlesList sectionName="Recent posts" articles={allArticles}/>
-			<section><hr/></section>
+			{nonFeaturedArticle.length > 0
+				? <><SectionArticlesList sectionName="Recent posts" articles={nonFeaturedArticle}/><section><hr/></section></>
+				: null
+			}
 			<SectionTags tags={orderedTags}/>
 		</PageLayout>
 	);
