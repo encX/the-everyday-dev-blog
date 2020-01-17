@@ -16,9 +16,9 @@ tags: ["code-quality", "programming"]
 หรือ เป็นทีมเจ้าของระบบที่ต้อง review code ของคนอื่นเป็นประจำ
 หรือ contribute project open source ต่างๆ
 อาจจะประสบพบเจอกับ code จากคนมากหน้าหลายตารวมอยู่ใน project เดียวกัน
-ซึ่งแน่นอนว่าทุกคนก็อาจจะไม่ได้เขียน code สวยงาม
-ไม่ได้ใช้ practice ที่ดีในการแก้ปัญหา หรือ แม้แต่อ่านแล้วไม่สามารถเข้าใจได้เลยด้วยซ้ำ
+ซึ่งแน่นอนว่าทุกคนก็อาจจะไม่ได้ใช้ practice ที่ดีในการแก้ปัญหา
+หรือเขียน code โดยไม่ได้ระวัง pitfall (สิ่งที่ควรหลีกเลี่ยง) ของภาษาหรือ framework ที่ใช้
 
-// insert some unreadable function here
+// insert a function with some pitfall in code amd briefly describe it.
 
-จากปัญหาเหล่านี้จึงเกิดเป็น lint tool หรือ static code analyzer ขึ้นมา
+จากปัญหาเหล่านี้จึงเกิดเป็น static code analyzer หรือที่รู้จักกันในชื่อว่า lint tool ขึ้นมา
