@@ -19,7 +19,7 @@ tags: ["code-quality", "programming"]
 ซึ่งแน่นอนว่าทุกคนก็อาจจะไม่ได้ใช้ practice ที่ดีในการแก้ปัญหา
 หรือเขียน code โดยไม่ได้ระวัง pitfall (สิ่งที่ควรหลีกเลี่ยง) ของภาษาหรือ framework ที่ใช้
 
-// insert a function with some pitfall in code amd briefly describe it.
+// insert a function with some pitfall in code and briefly describe it.
 
 จากปัญหาเหล่านี้จึงเกิดเป็น static code analyzer หรือที่รู้จักกันในชื่อว่า lint tool ขึ้นมา
 ซึ่งจุดมุ่งหมายของ lint tool คือการตรวจ code หา code ที่จะหรืออาจจะทำงานไม่ถูกต้อง
@@ -48,4 +48,17 @@ function degreeToRadiant(degree) {
 และ `NaN` ยังเป็น object พิเศษที่ไม่สามารถแกะ property ออกมาดูได้ 
 สิ่งที่ทำได้อย่างเดียวคือใช้ built-in function `Number.isNaN()` หรือ global `isNaN()` เท่านั้น
 
-ดังนั้นโปรแกรมด้านบนจึง
+ดังนั้นโปรแกรมด้านบนจึงเข้า else ตลอดเวลา ซึ่งโปรแกรมจะเกิด Runtime error ขึ้นถ้า parameter `degree`
+ไม่ได้เป็น type `Number` (`NaN` จัดอยู่ใน type `Number` แต่เป็นข้อยกเว้นในกรณีนี้)
+
+และภาษา JavaScript เป็น Interpreted language ที่ไม่มีการ compile เพราะฉนั้น
+ปัญหา Syntax error จะยังมองไม่เห็นจนกระทั่งนำไป execute จริงๆ
+และปัญหาการเขียนโดยไม่เลี่ยง pitfall จึงจะยิ่งยากและเสียเวลาในการหา Error ใน code
+
+ซึ่งตัว lint tool สามารถดักจับเคสเหล่านี้ได้ทันทีโดยไม่ต้องนำ code ไป execute ก่อน
+โดยการทำงานของ lint tool คือ จะนำ code ไปสร้าง Abstract syntax tree
+เพื่อดู flow การทำงานของโปรแกรมและดักจับ pattern ของ flow ต่างๆตามกฏที่ตั้งไว้ได้
+
+เมื่อเรามี lint tool กับกับกฏที่ช่วยเรื่อง pitfall แล้ว
+การเขียน code จะมี feedback loop (ความไวที่จะรู้ได้ว่าโปรแกรมผิดพลาด) ที่ดีขึ้น
+และยังสามารถทำให้ตัวคนเขียน code สามารถเขียนรู้จากข้อผิดพลาดที่เกิดขึ้นได้เร็วขึ้นด้วย
