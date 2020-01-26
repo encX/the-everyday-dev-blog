@@ -92,7 +92,7 @@ function sumOfPrimes(max: number): number {  // +1
 ทีนี้ลองพิจารณาฟังก์ชั่นนี้บ้าง...
  
 ```typescript
-function getFriendlyTimeWord(minutes: number): string { // +1
+function getRoughlyTimeWord(minutes: number): string { // +1
     if (minutes < 1) return "few seconds ago";          // +1
     if (minutes < 10) return "a moment ago";            // +1
     if (minutes < 60) return "a while ago";             // +1
@@ -116,5 +116,9 @@ function getFriendlyTimeWord(minutes: number): string { // +1
 
 ยกตัวอย่างเดิม แต่วัดด้วย Cognitive Complexity
 
-
 // last same example but with cognitive complexity
+
+สังเกตว่าใน function แรกนั้นมี if ซ้อนอยู่ใน for ที่ซ้อนอยู่ใน for อีกที
+ซึ่ง Cyclomatic Complexity นั้นจะให้แต้ม "ลงโทษ" ทบไปเรื่อยตามจำนวนชั้นที่ซ้อนลงไป
+เนื่องจากการอ่าน statement ที่มีซ้อนกันเยอะๆนั้นยากต่อการอ่าน
+เพราะต้องพึ่งการจำเงื่อนไขของ block ที่ซ้อนอยู่ 
