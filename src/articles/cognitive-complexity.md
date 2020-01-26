@@ -64,7 +64,7 @@ function getTransitiveClosure(graph: boolean[][], nodes: number): boolean[][] { 
 ให้โปรแกรมมีความซับซ้อนน้อยลง จนกลายเป็นเรื่องปกติที่ทุกคนใช้เป็นมาตรฐาน
 
 แต่ตัว Cyclomatic complexity นี้ยังมีปัญหาบางอย่างที่แก้ไม่ได้
-นั่นคือเรื่อง "ความอ่านง่ายของ code"
+นั่นคือเรื่อง "ความเข้าใจง่ายของ code"
 
 ลอง พิจารณาฟังก์ชั่นนี้...
 
@@ -109,3 +109,12 @@ function getFriendlyTimeWord(minutes: number): string { // +1
 ---
 
 ### Cognitive Complexity มาตรฐานใหม่เพื่อวัดความเข้าใจง่ายของ code
+เมื่อการอ่าน code เป็นสิ่งสำคัญ Cognitive complexity จึงถูกสร้างขึ้น 
+เป็น metric ที่คำนึงเรื่องความเข้าใจง่ายเป็นหลัก
+ดังนั้นการทำงานของ code บาง pattern ที่อาจจะทำงานซับซ้อน
+แต่ถ้าตัว statement เองอ่านแล้วเข้าใจได้ทันทีจะไม่เพิ่มแต้มความยากให้
+
+ยกตัวอย่างเดิม แต่วัดด้วย Cognitive Complexity
+
+
+// last same example but with cognitive complexity
