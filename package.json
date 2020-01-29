@@ -41,7 +41,7 @@
     "gatsby-plugin-no-sourcemaps": "^2.1.1",
     "gatsby-remark-copy-linked-files": "^2.1.31",
     "gatsby-remark-custom-blocks": "^2.1.15",
-    "gatsby-remark-images": "^3.1.28",
+    "gatsby-remark-images": "^3.1.43",
     "gatsby-remark-prismjs": "^3.3.24",
     "gatsby-transformer-remark": "^2.6.32",
     "jest": "^24.9.0",

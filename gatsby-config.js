@@ -15,6 +15,9 @@ module.exports = {
 				plugins: [
 					{
 						resolve: 'gatsby-remark-prismjs',
+						options: {
+							showLineNumbers: true,
+						},
 					},
 					{
 						resolve: 'gatsby-remark-custom-blocks',
@@ -29,6 +32,12 @@ module.exports = {
 									title: 'optional',
 								},
 							},
+						},
+					},
+					{
+						resolve: 'gatsby-remark-images',
+						options: {
+							maxWidth: 992,
 						},
 					},
 				],

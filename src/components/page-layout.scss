@@ -113,6 +113,8 @@ body {
 				color: $accent-light;
 			}
 
+			&.active { font-weight: 500 }
+
 			&:hover, &.active {
 				background-color: $accent-dark;
 				color: $light;
