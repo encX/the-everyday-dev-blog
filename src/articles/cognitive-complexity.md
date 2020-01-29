@@ -2,7 +2,7 @@
 title: "Cognitive complexity"  
 headliner: "เมื่อการอ่าน code ของคนอื่นเป็นเรื่องจำเป็น"  
 featured: true  
-featuredImage: ../images/cognitive-complexity-feature.png 
+featuredImage: ../images/cognitive-complexity-feature.jpg 
 path: "/cognitive-complexity"  
 date: "2020-01-25"  
 tags: ["code-quality", "programming"]
@@ -28,7 +28,7 @@ tags: ["code-quality", "programming"]
 หนึ่งในนั้นคือ "Cyclomatic complexity" ที่สร้างขึ้นเมื่อปี 1976
 
 Cyclomatic complexity สร้างขึ้นด้วยไอเดียการมอง flow ของโปรแกรมเป็น graph
-แล้วพิจารณาจำนวน node และ edge ที่เกิดขึ้นและคำนวนเป็นแต้ม ซึ่งใช้บอกจำนวนของ test case อย่างต่ำ
+แล้วพิจารณาจำนวน node และ edge ที่เกิดขึ้นและคำนวนเป็น**"แต้ม"** ซึ่งใช้บอกจำนวนของ test case อย่างต่ำ
 ที่ต้องเขียนเพื่อให้ test case ครอบคลุมทุก branch (ทางแยกในโปรแกรม เช่น if/loop/try-catch) ในฟังก์ชั่นนั้นๆ
 
 ตัวอย่างเช่น...
@@ -74,7 +74,7 @@ function sumOfPrimes(order: number): number { // +1
     for (let i = 1; i <= order; ++i) {        // +1
         let isPrime = true;
         for (let j = 2; j < i; ++j) {         // +1
-            if (i % j == 0) {                 // +1
+            if (i % j === 0) {                // +1
                 isPrime = false;
                 break;
             }
@@ -88,8 +88,6 @@ function sumOfPrimes(order: number): number { // +1
 
 จะสังเกตได้ว่า code มีแต้ม Cyclomatic = 5
 แต่การอ่านเพื่อให้เข้าใจว่าฟังก์ชั่นนี้ทำอะไรได้ค่อนข้างลำบาก
-
-![sumOfPrime Graph](../images/sumOfPrimesGraph.png "sumOfPrime graph")
 
 ทีนี้ลองพิจารณาฟังก์ชั่นนี้บ้าง...
  
@@ -153,3 +151,86 @@ function getRoughlyTimeWord(minutesAgo: number): string {
 
 กลับกัน function นี้มีคะแนนลดลงไปอีกเพราะไม่ได้นับตัว function เองเป็นความซับซ้อน
 ตัว `if` แต่ละเงื่อนไขก็ได้รับอย่างละ 1 แต้ม จึงทำให้มีคะแนนรวมเพียง 4
+
+จะสังเกตได้ว่า Cognitive Complexity จะไม่ได้พึ่งคณิตศาสตร์ (Graph) ในการวัดเหมือน Cyclomatic Complexity
+แต่จะให้ความสำคัญกับการอ่าน statement ในแต่ละรูปแบบแทน
+
+ยกตัวอย่างเปรียบเทียบคร่าวๆ ...
+
+#### if..else vs Shorthand
+```typescript
+// Case A (Cyclomatic complexity 2; Cognitive complexity 2)
+let a: string;
+if (someVar === valueX) {                 // cyc +1 ; cog +1
+    a = "some value";
+} else if (anotherVar === valueY) {       // cyc +1 ; cog +1
+    a = "another value";
+} else {
+    a = "other value";
+}
+
+// Case B (Cyclomatic complexity 2; Cognitive complexity 0)
+const b = someVar === valueX             // cyc +1
+    ? "some value"
+    : anotherVar === valueY              // cyc +1
+        ? "another value"
+        : "other value";
+```
+การเขียน `if` ปกตินั้นได้แต้มเพราะการจะเข้่าใจว่า statement ในแต่ละ `if` นั้นทำงานอะไรบ้่าง
+ต้องมองเข้าไปในแต่ละ scope ซึ่งใช้เวลาพอสมควร เพราะแต่ละ scope อาจมีหลาย statement
+ต่างกับ shorthand ที่เราสามารถมองรู้เลยว่า value ของตัวแปรจะเป็นค่าใดตามเงื่อนไขที่กำหนด
+
+#### if..else vs switch
+```typescript
+// Case A (Cyclomatic complexity 4; Cognitive complexity 3)
+function A(param: string): string {                // cyc +1
+    if (param === 'create') return createData();   // cyc +1 ; cog +1
+    if (param === 'update') return updateData();   // cyc +1 ; cog +1
+    if (param === 'delete') return deleteData();   // cyc +1 ; cog +1
+    throw new Error('Unknown operation.');
+}
+
+// Case B (Cyclomatic complexity 4; Cognitive complexity 1)
+function B(param: string): string {                      // cyc +1
+    switch (param) {                                     //          cog +1
+        case 'create': return createData();              // cyc +1
+        case 'update': return updateData();              // cyc +1
+        case 'delete': return deleteData();              // cyc +1
+        default: throw new Error('Unknown operation.');
+    }
+}
+```
+เนื่องจาก `switch` เรารู้อยู่แล้วว่าตัวแปรไหนกำลังถูกพิจารณาเป็นค่าต่างๆ
+แค่เพียงมองผ่านๆก็รู้แล้วว่า ถ้าตัวแปรมีค่าใดๆ จะได้ผลลัพธ์อย่างไร
+_(เฉพาะกรณี `switch` แล้ว `return` เลย; ถ้า `switch` แล้ว `break` จะถูกบวกค่าการ break ออกจาก scope)_
+
+ต่างกับ `if` ที่ต้องคอยระวังว่าแต่ละ condition เชคตัวแปรใดอยู่ ซึ่งอาจจะไม่เหมือนกันก็ได้
+จึงทำให้มีแต้มความยากสำหรับแต่ละ condition
+
+ส่วนของรายละเอียดเพิ่มเติมสามารถอ่าน white paper ของ SonarSource ได้จาก reference ด้านล่าง
+
+---
+
+### Cognitive Complexity ในการใช้งานจริง
+เนื่องจาก Cognitive Complexity ยังไม่เป็นที่แพร่หลาย tools ที่มีความสามารถในการวัด
+หรือ IDE tools ที่สามารถโชว์แต้มได้ขณะเขียน code เลย ยังมีน้อย
+
+#### Lint tools
+1. SonarQube
+2. ESLint (ใช้ plugin `eslint-plugin-sonarjs`)
+![Cognitive complexity inspection tool](../images/cognitive-complexity-lint_ide.png)
+
+#### IDE inspection tool
+1. CongitiveComplexity (JetBrain's Rider plugin)
+![Cognitive complexity inspection tool](../images/cognitive-complexity-ide-tool.png)
+
+---
+
+สำหรับใครที่ยังไม่เข้าใจว่า lint tools คืออะไร ใช้งานอย่างไร หรือมีประโยชน์อย่างไร
+ตอนต่อไปจะอธิบายถึงการใช้ lint tools ให้มีประสิทธิภาพสำหรับทั้ง project ทำคนเดียว
+และที่ทำร่วมกัน
+
+---
+
+#### Reference
+1. [Cognitive Complexity: A new way of measuring understandability, G. Ann Campbell](https://www.sonarsource.com/docs/CognitiveComplexity.pdf)

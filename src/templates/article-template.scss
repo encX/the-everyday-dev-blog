@@ -109,6 +109,10 @@ main article.post {
 			}
 
 			p { margin: 8px 0 }
+
+			.gatsby-resp-image-image {
+				position: relative !important;
+			}
 		}
 	}
 }
