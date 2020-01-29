@@ -69,17 +69,17 @@ function getTransitiveClosure(graph: boolean[][], nodes: number): boolean[][] { 
 ลอง พิจารณาฟังก์ชั่นนี้...
 
 ```typescript
-function sumOfPrimes(order: number): number {  // +1
+function sumOfPrimes(order: number): number { // +1
     let total = 0;
-    for (let i = 1; i <= order; ++i) {         // +1
+    for (let i = 1; i <= order; ++i) {        // +1
         let isPrime = true;
-        for (let j = 2; j < i; ++j) {          // +1
-            if (i % j == 0) {                  // +1
+        for (let j = 2; j < i; ++j) {         // +1
+            if (i % j == 0) {                 // +1
                 isPrime = false;
                 break;
             }
         }
-        if (isPrime) total += i;               // +1
+        if (isPrime) total += i;              // +1
     }
 
     return total;
@@ -89,14 +89,16 @@ function sumOfPrimes(order: number): number {  // +1
 จะสังเกตได้ว่า code มีแต้ม Cyclomatic = 5
 แต่การอ่านเพื่อให้เข้าใจว่าฟังก์ชั่นนี้ทำอะไรได้ค่อนข้างลำบาก
 
+![sumOfPrime Graph](../images/sumOfPrimesGraph.png "sumOfPrime graph")
+
 ทีนี้ลองพิจารณาฟังก์ชั่นนี้บ้าง...
  
 ```typescript
-function getRoughlyTimeWord(minutesAgo: number): string {  // +1
-    if (minutesAgo < 1) return "few seconds ago";          // +1
-    if (minutesAgo < 10) return "a moment ago";            // +1
-    if (minutesAgo < 60) return "about an hour ago";       // +1
-    if (minutesAgo < 60 * 24) return "today";              // +1
+function getRoughlyTimeWord(minutesAgo: number): string { // +1
+    if (minutesAgo < 1) return "few seconds ago";         // +1
+    if (minutesAgo < 10) return "a moment ago";           // +1
+    if (minutesAgo < 60) return "about an hour ago";      // +1
+    if (minutesAgo < 60 * 24) return "today";             // +1
 
     return "long time ago";
 }
@@ -119,33 +121,31 @@ function getRoughlyTimeWord(minutesAgo: number): string {  // +1
 ```typescript
 function sumOfPrimes(order: number): number {
     let total = 0;
-    for (let i = 1; i <= order; ++i) {         // +1
+    for (let i = 1; i <= order; ++i) {   // +1
         let isPrime = true;
-        for (let j = 2; j < i; ++j) {          // +2
-            if (i % j === 0) {                 // +3
+        for (let j = 2; j < i; ++j) {    // +2
+            if (i % j === 0) {           // +3
                 isPrime = false;
-                break;                         // +1
+                break;                   // +1
             }
         }
-        if (isPrime) total += i;               // +2
+        if (isPrime) total += i;         // +2
     }
 
     return total;
 }
 ```
 
-เนื่องจากมี statement ซ้อนกันหลายชั้น วิธี Cognitive complexity จึงให้แต้มโทษทบยอดลงไปแต่ละชั้น
+function นี้ Cognitive Complexity = 9 เนื่องจากมี statement ซ้อนกันหลายชั้น วิธี Cognitive complexity จึงให้แต้มโทษทบยอดลงไปแต่ละชั้น
 ดังนั้น ทั้ง `for (let j ...` และ `if (isPrime)` ก็จะถูก +2 ทั้งคู่เพราะตัวมันเองมีความลึก 2
 และ `if (i % j === 0)` ก็ถูก +3 เพราะอยู่ชั้น 3 เป็นต้น 
 
-จึงมีคะแนน Cognitive Complexity = 9
-
 ```typescript
 function getRoughlyTimeWord(minutesAgo: number): string {
-    if (minutesAgo < 1) return "few seconds ago";          // +1
-    if (minutesAgo < 10) return "a moment ago";            // +1
-    if (minutesAgo < 60) return "about an hour ago";       // +1
-    if (minutesAgo < 60 * 24) return "today";              // +1
+    if (minutesAgo < 1) return "few seconds ago";      // +1
+    if (minutesAgo < 10) return "a moment ago";        // +1
+    if (minutesAgo < 60) return "about an hour ago";   // +1
+    if (minutesAgo < 60*24) return "today";            // +1
 
     return "long time ago";
 }
