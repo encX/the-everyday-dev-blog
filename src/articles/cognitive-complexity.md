@@ -34,7 +34,7 @@ Cyclomatic complexity สร้างขึ้นด้วยไอเดีย�
 ตัวอย่างเช่น...
 
 ```typescript
-function getTransitiveClosure(graph: boolean[][], nodes: number): boolean[][] { // +1 
+function getTransitiveClosure(graph: boolean[][], nodes: number): boolean[][] { // +1
 	// Warshall's algorithm
 	for (let k = 0; k < nodes; k++) {                                           // +1
 		for (let i = 0; i < nodes; i++) {                                       // +1
@@ -69,17 +69,17 @@ function getTransitiveClosure(graph: boolean[][], nodes: number): boolean[][] { 
 ลอง พิจารณาฟังก์ชั่นนี้...
 
 ```typescript
-function sumOfPrimes(max: number): number {  // +1
+function sumOfPrimes(order: number): number {  // +1
     let total = 0;
-    for (let i = 1; i <= max; ++i) {         // +1
+    for (let i = 1; i <= order; ++i) {         // +1
         let isPrime = true;
-        for (let j = 2; j < i; ++j) {        // +1
-            if (i % j == 0) {                // +1
+        for (let j = 2; j < i; ++j) {          // +1
+            if (i % j == 0) {                  // +1
                 isPrime = false;
                 break;
             }
         }
-        if (isPrime) total += i;             // +1
+        if (isPrime) total += i;               // +1
     }
 
     return total;
@@ -92,11 +92,11 @@ function sumOfPrimes(max: number): number {  // +1
 ทีนี้ลองพิจารณาฟังก์ชั่นนี้บ้าง...
  
 ```typescript
-function getRoughlyTimeWord(minutes: number): string { // +1
-    if (minutes < 1) return "few seconds ago";          // +1
-    if (minutes < 10) return "a moment ago";            // +1
-    if (minutes < 60) return "a while ago";             // +1
-    if (minutes < 60 * 24) return "today";              // +1
+function getRoughlyTimeWord(minutesAgo: number): string {  // +1
+    if (minutesAgo < 1) return "few seconds ago";          // +1
+    if (minutesAgo < 10) return "a moment ago";            // +1
+    if (minutesAgo < 60) return "about an hour ago";       // +1
+    if (minutesAgo < 60 * 24) return "today";              // +1
 
     return "long time ago";
 }
@@ -114,11 +114,42 @@ function getRoughlyTimeWord(minutes: number): string { // +1
 ดังนั้นการทำงานของ code บาง pattern ที่อาจจะทำงานซับซ้อน
 แต่ถ้าตัว statement เองอ่านแล้วเข้าใจได้ทันทีจะไม่เพิ่มแต้มความยากให้
 
-ยกตัวอย่างเดิม แต่วัดด้วย Cognitive Complexity
+ยกตัวอย่างเดิม แต่วัดด้วย Cognitive Complexity ดูบ้าง
 
-// last same example but with cognitive complexity
+```typescript
+function sumOfPrimes(order: number): number {
+    let total = 0;
+    for (let i = 1; i <= order; ++i) {         // +1
+        let isPrime = true;
+        for (let j = 2; j < i; ++j) {          // +2
+            if (i % j === 0) {                 // +3
+                isPrime = false;
+                break;                         // +1
+            }
+        }
+        if (isPrime) total += i;               // +2
+    }
 
-สังเกตว่าใน function แรกนั้นมี if ซ้อนอยู่ใน for ที่ซ้อนอยู่ใน for อีกที
-ซึ่ง Cyclomatic Complexity นั้นจะให้แต้ม "ลงโทษ" ทบไปเรื่อยตามจำนวนชั้นที่ซ้อนลงไป
-เนื่องจากการอ่าน statement ที่มีซ้อนกันเยอะๆนั้นยากต่อการอ่าน
-เพราะต้องพึ่งการจำเงื่อนไขของ block ที่ซ้อนอยู่ 
+    return total;
+}
+```
+
+เนื่องจากมี statement ซ้อนกันหลายชั้น วิธี Cognitive complexity จึงให้แต้มโทษทบยอดลงไปแต่ละชั้น
+ดังนั้น ทั้ง `for (let j ...` และ `if (isPrime)` ก็จะถูก +2 ทั้งคู่เพราะตัวมันเองมีความลึก 2
+และ `if (i % j === 0)` ก็ถูก +3 เพราะอยู่ชั้น 3 เป็นต้น 
+
+จึงมีคะแนน Cognitive Complexity = 9
+
+```typescript
+function getRoughlyTimeWord(minutesAgo: number): string {
+    if (minutesAgo < 1) return "few seconds ago";          // +1
+    if (minutesAgo < 10) return "a moment ago";            // +1
+    if (minutesAgo < 60) return "about an hour ago";       // +1
+    if (minutesAgo < 60 * 24) return "today";              // +1
+
+    return "long time ago";
+}
+```
+
+กลับกัน function นี้มีคะแนนลดลงไปอีกเพราะไม่ได้นับตัว function เองเป็นความซับซ้อน
+ตัว `if` แต่ละเงื่อนไขก็ได้รับอย่างละ 1 แต้ม จึงทำให้มีคะแนนรวมเพียง 4

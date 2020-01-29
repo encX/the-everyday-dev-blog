@@ -13,6 +13,9 @@ module.exports = {
 				plugins: [
 					{
 						resolve: 'gatsby-remark-prismjs',
+						options: {
+							showLineNumbers: true,
+						},
 					},
 					{
 						resolve: 'gatsby-remark-custom-blocks',

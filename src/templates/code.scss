@@ -9,7 +9,7 @@ pre[class*="language-"] {
 		font-size: 18px;
 	}
 	text-align: left;
-	white-space: pre-wrap;
+	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
@@ -43,6 +43,13 @@ pre[class*="language-"] {
 	overflow: auto;
 	border-radius: 0.3em;
 
+	&.line-numbers {
+		padding: 0 0 0 3.5em;
+		.line-numbers-rows {
+			padding-left: 1em;
+		}
+	}
+
 	@include elevate-1;
 }
 
@@ -56,6 +63,8 @@ pre[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
 }
+
+// Theming
 
 .token.comment,
 .token.prolog,
