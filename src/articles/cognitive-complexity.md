@@ -1,5 +1,5 @@
 ---
-title: "Cognitive complexity"  
+title: "Cognitive Complexity"  
 headliner: "เมื่อการอ่าน code ของคนอื่นเป็นเรื่องจำเป็น"  
 featured: true  
 featuredImage: ../images/cognitive-complexity-featured.jpg 
@@ -9,13 +9,13 @@ tags: ["code-quality", "programming"]
 ---
 
 สำหรับหลายๆคน อาจฟังดูเหมือนเรื่องไม่ใหญ่โตอะไร 
-แต่สำหรับคนที่ต้องทำงานกับระบบที่คน contribute เยอะๆ
-ทำงานกับบริษัทใหญ่ที่มี culture ให้ทุกคนสามารถแก้ไขระบบของทีมอื่นได้
+แต่สำหรับคนที่ต้องทำงานกับ codebase ที่คนเขียนเยอะๆ
+ทำงานกับบริษัทใหญ่ที่มี culture ให้ทุกคนสามารถแก้ไข code ของทีมอื่นได้
 หรือ เป็นทีมเจ้าของระบบที่ต้อง review code ของคนอื่นเป็นประจำ
 หรือ contribute project open source ต่างๆ
 อาจจะประสบพบเจอกับ code จากคนมากหน้าหลายตารวมอยู่ใน project เดียวกัน
 ซึ่งแน่นอนว่าทุกคนก็อาจจะไม่ได้ใช้ practice ที่ดีในการแก้ปัญหา
-หรือเขียน code ที่ใช้วิธีต่างๆได้ถูกต้อง แต่ code กลับอ่านและเข้าใจยาก
+หรือเขียน code ที่ใช้วิธีต่างๆได้ถูกต้อง แต่ code กลับอ่านแล้ว**เข้าใจยาก**
 
 ---
 
@@ -25,11 +25,11 @@ tags: ["code-quality", "programming"]
 แต่การเขียน test อาจจะไม่มีประสิทธิภาพ
 บางครั้งต้องเขียน test case ในปริมาณที่ "มากเกินไป" ถึงจะครอบคลุมการทำงานทั้งหมด
 จึงทำให้คนเริ่มสร้างมาตรฐานในการวัดความซับซ้อนของโปรแกรมขึ้นมา
-หนึ่งในนั้นคือ "Cyclomatic complexity" ที่สร้างขึ้นเมื่อปี 1976
+หนึ่งในนั้นคือ "Cyclomatic Complexity" ที่สร้างขึ้นเมื่อปี 1976
 
-Cyclomatic complexity สร้างขึ้นด้วยไอเดียการมอง flow ของโปรแกรมเป็น graph
+Cyclomatic Complexity สร้างขึ้นด้วยไอเดียการมอง flow ของโปรแกรมเป็น graph
 แล้วพิจารณาจำนวน node และ edge ที่เกิดขึ้นและคำนวนเป็น**"แต้ม"** ซึ่งใช้บอกจำนวนของ test case อย่างต่ำ
-ที่ต้องเขียนเพื่อให้ test case ครอบคลุมทุก branch (ทางแยกในโปรแกรม เช่น if/loop/try-catch) ในฟังก์ชั่นนั้นๆ
+ที่ต้องเขียนเพื่อให้ test case ครอบคลุมทุก branch (ทางแยกในโปรแกรม เช่น if/loop/try-catch) ใน function นั้นๆ
 
 ตัวอย่างเช่น...
 
@@ -47,26 +47,26 @@ function getTransitiveClosure(graph: boolean[][], nodes: number): boolean[][] { 
 }
 ```
 
-ฟังก์ชั่นนี้มีแต้ม Cyclomatic Complexity 7 เนื่องจากมี for-loop เป็นทางแยกแล้ว 3
+function นี้มีแต้ม Cyclomatic Complexity 7 เนื่องจากมี for-loop เป็นทางแยกแล้ว 3
 และยังพิจารณา condition ของค่าที่ถูก assign เข้า array อีก
 สุดท้ายตัว function declaration เองก็มีมูลค่าอีก 1 แต้ม
-เพราะ function เองก็เป็น sub-routine ที่แยกออกมาจากฟังก์ชั่นที่เรียกใช้
+เพราะ function เองก็เป็น sub-routine ที่แยกออกมาจาก function ที่เรียกใช้
 
 ---
 
-### Cyclomatic complexity กลายเป็น norm โดยปริยาย
+### Cyclomatic Complexity กลายเป็นมาตรฐานไปโดยปริยาย
 
 ในยุคหลังมา การทำ software ร่วมกันกลายเป็นเรื่องปกติและแพร่หลาย โดยเฉพาะในโลกของ Open source
 ซึ่งการเขียน code ให้ไม่ซับซ้อนมากจนเกินไปเป็นเรื่องสำคัญ เพราะจะทำให้คนที่ไม่เคยอ่าน code ชุดนั้นมาก่อน
-สามารถ "เข้าใจได้ง่าย" และรวดเร็วขึ้น ทำให้ทำงานร่วมกันได้มีประสิทธิภาพมากขึ้น จึงมีคนนำ Cyclomatic complexity
-มาเป็นตัวบ่งชี้ว่า ฟังก์ชั่นใดๆในโปรแกรมมีความซับซ้อนมากเกินไปหรือไม่ 
+สามารถ "เข้าใจได้ง่าย" และรวดเร็วขึ้น ทำให้ทำงานร่วมกันได้มีประสิทธิภาพมากขึ้น จึงมีคนนำ Cyclomatic Complexity
+มาเป็นตัวบ่งชี้ว่า function ใดๆในโปรแกรมมีความซับซ้อนมากเกินไปหรือไม่ 
 ถ้ามีมากเกินไปก็จะเป็นสัญญาณให้เจ้าของ code ทำการ "refactor" code นั้นด้วยวิธีต่างๆ
 ให้โปรแกรมมีความซับซ้อนน้อยลง จนกลายเป็นเรื่องปกติที่ทุกคนใช้เป็นมาตรฐาน
 
-แต่ตัว Cyclomatic complexity นี้ยังมีปัญหาบางอย่างที่แก้ไม่ได้
+แต่ตัว Cyclomatic Complexity นี้ยังมีปัญหาบางอย่างที่แก้ไม่ได้
 นั่นคือเรื่อง "ความเข้าใจง่ายของ code"
 
-ลอง พิจารณาฟังก์ชั่นนี้...
+ลอง พิจารณา function นี้...
 
 ```typescript
 function sumOfPrimes(order: number): number { // +1
@@ -86,13 +86,18 @@ function sumOfPrimes(order: number): number { // +1
 }
 ```
 
-จะสังเกตได้ว่า code มีแต้ม Cyclomatic = 5
-แต่การอ่านเพื่อให้เข้าใจว่าฟังก์ชั่นนี้ทำอะไรได้ค่อนข้างลำบาก
+จะสังเกตได้ว่า code Cyclomatic Complexity = 5 ซึ่งถ้าพิจารณาตาม flow ของ code
+ก็จะพบว่ามี 5 ทางแยกใน function นี้
 
-ทีนี้ลองพิจารณาฟังก์ชั่นนี้บ้าง...
+![function sumOfPrimes' simplified flowchart](../images/cognitive-complexity-fnA-flow.png)
+
+แต่สุดท้ายแล้วการอ่านเพื่อให้เข้าใจว่าfunctionนี้ทำอะไรได้ค่อนข้างลำบาก เพราะมี `for` ซ้อนกัน
+และมี `if` ซ้อนอยู่ข้างในอีก
+
+ทีนี้ลองพิจารณา function นี้บ้าง...
  
 ```typescript
-function getRoughlyTimeWord(minutesAgo: number): string { // +1
+function getRoughTimeWord(minutesAgo: number): string { // +1
     if (minutesAgo < 1) return "few seconds ago";         // +1
     if (minutesAgo < 10) return "a moment ago";           // +1
     if (minutesAgo < 60) return "about an hour ago";      // +1
@@ -102,19 +107,21 @@ function getRoughlyTimeWord(minutesAgo: number): string { // +1
 }
 ```
 
-ฟังก์ชั่นนี้ได้ 5 แต้มเท่ากัน แต่อ่านง่ายกว่ามาก เพราะตัว `if ... return` สามารถอ่านเข้าใจง่ายด้วยตัวมันเองอยู่แล้ว
+![function getRoughTimeWord's simplified flowchart](../images/cognitive-complexity-fnB-flow.png)
+
+function นี้ได้ 5 แต้มเท่ากัน แต่อ่านง่ายกว่ามาก เพราะตัว `if ... return` สามารถอ่านเข้าใจง่ายด้วยตัวมันเองอยู่แล้ว
 จึงเป็นปัญหาว่า statement ที่มีความซับซ้อนในการทำงานเพราะสร้างทางแยกเยอะ แต่อ่านแล้วเข้าใจง่าย
-กลับถูกตีว่าเข้าใจยาก เพียงเพราะใช้มาตรฐานในการวัดไม่ถูกจุด
+กลับถูกให้ค่าความยากเท่ากับ function แรก เพียงเพราะใช้มาตรฐานในการวัดไม่ถูกจุด
 
 ---
 
-### Cognitive Complexity มาตรฐานใหม่เพื่อวัดความเข้าใจง่ายของ code
-เมื่อการอ่าน code เป็นสิ่งสำคัญ Cognitive complexity จึงถูกสร้างขึ้น 
-เป็น metric ที่คำนึงเรื่องความเข้าใจง่ายเป็นหลัก
+## Cognitive Complexity มาตรฐานใหม่เพื่อวัดความเข้าใจง่ายของ code
+เมื่อการอ่าน code เป็นสิ่งสำคัญ Cognitive Complexity จึงถูกสร้างขึ้นเป็น
+metric ที่คำนึงเรื่องความเข้าใจง่ายเป็นหลัก
 ดังนั้นการทำงานของ code บาง pattern ที่อาจจะทำงานซับซ้อน
 แต่ถ้าตัว statement เองอ่านแล้วเข้าใจได้ทันทีจะไม่เพิ่มแต้มความยากให้
 
-ยกตัวอย่างเดิม แต่วัดด้วย Cognitive Complexity ดูบ้าง
+ยกตัวอย่างเดิม function `sumOfPrimes` แต่วัดด้วย Cognitive Complexity
 
 ```typescript
 function sumOfPrimes(order: number): number {
@@ -134,12 +141,17 @@ function sumOfPrimes(order: number): number {
 }
 ```
 
-function นี้ Cognitive Complexity = 9 เนื่องจากมี statement ซ้อนกันหลายชั้น วิธี Cognitive complexity จึงให้แต้มโทษทบยอดลงไปแต่ละชั้น
+function นี้ Cognitive Complexity = 9 เนื่องจากมี statement ซ้อนกันหลายชั้น วิธี Cognitive Complexity จึงให้แต้มโทษทบยอดลงไปแต่ละชั้น
 ดังนั้น ทั้ง `for (let j ...` และ `if (isPrime)` ก็จะถูก +2 ทั้งคู่เพราะตัวมันเองมีความลึก 2
-และ `if (i % j === 0)` ก็ถูก +3 เพราะอยู่ชั้น 3 เป็นต้น 
+และ `if (i % j === 0)` ก็ถูก +3 เพราะอยู่ชั้น 3 เป็นต้น
+
+ซึ่งถ้าพิจารณาจากภาพของ flow จะให้แต้มดังนี้
+![function sumOfPrimes' cognitive flowchart](../images/cognitive-complexity-fnA-flow-cognitive.png)
+
+เทียบกับ function `getRoughTimeWord`
 
 ```typescript
-function getRoughlyTimeWord(minutesAgo: number): string {
+function getRoughTimeWord(minutesAgo: number): string {
     if (minutesAgo < 1) return "few seconds ago";      // +1
     if (minutesAgo < 10) return "a moment ago";        // +1
     if (minutesAgo < 60) return "about an hour ago";   // +1
@@ -155,11 +167,11 @@ function getRoughlyTimeWord(minutesAgo: number): string {
 จะสังเกตได้ว่า Cognitive Complexity จะไม่ได้พึ่งคณิตศาสตร์ (Graph) ในการวัดเหมือน Cyclomatic Complexity
 แต่จะให้ความสำคัญกับการอ่าน statement ในแต่ละรูปแบบแทน
 
-ยกตัวอย่างเปรียบเทียบคร่าวๆ ...
+ยกตัวอย่างวิธีวัดบางอย่างที่เห็นภาพง่ายๆเช่น...
 
-#### if..else vs Shorthand
+#### if..else vs shorthand
 ```typescript
-// Case A (Cyclomatic complexity 2; Cognitive complexity 2)
+// Case A (Cyclomatic Complexity 2; Cognitive Complexity 2)
 let a: string;
 if (someVar === valueX) {                 // cyc +1 ; cog +1
     a = "some value";
@@ -169,20 +181,27 @@ if (someVar === valueX) {                 // cyc +1 ; cog +1
     a = "other value";
 }
 
-// Case B (Cyclomatic complexity 2; Cognitive complexity 0)
+// Case B (Cyclomatic Complexity 2; Cognitive Complexity 0)
 const b = someVar === valueX             // cyc +1
     ? "some value"
     : anotherVar === valueY              // cyc +1
         ? "another value"
         : "other value";
 ```
-การเขียน `if` ปกตินั้นได้แต้มเพราะการจะเข้่าใจว่า statement ในแต่ละ `if` นั้นทำงานอะไรบ้่าง
+การเขียน `if` ปกตินั้นได้แต้มเพราะการจะเข้าใจว่า statement ในแต่ละ `if` นั้นทำงานอะไรบ้าง
 ต้องมองเข้าไปในแต่ละ scope ซึ่งใช้เวลาพอสมควร เพราะแต่ละ scope อาจมีหลาย statement
 ต่างกับ shorthand ที่เราสามารถมองรู้เลยว่า value ของตัวแปรจะเป็นค่าใดตามเงื่อนไขที่กำหนด
 
+ดังนั้น shorthand จึงไม่ถูกนับเป็นแต้มความอ่านยาก 
+ซึ่งไม่ได้จำกัดเฉพาะ ternary operator (`cond ? val : val`) เท่านั้น
+แต่รวมไปถึง shorthand รูปแบบอื่นๆด้วย เช่น
+- null-coalescing (`??`) _[Swift, C#, TypeScript (3.7+), JavaScript (ES2020)]_
+- optional chaining (`?.`) _[Swift, Kotlin, C#, TypeScript (3.7+), JavaScript (ES2020)]_
+- Scala's ternary operator (`val a = if (i == 1) x else y`)
+
 #### if..else vs switch
 ```typescript
-// Case A (Cyclomatic complexity 4; Cognitive complexity 3)
+// Case A (Cyclomatic Complexity 4; Cognitive Complexity 3)
 function A(param: string): string {                // cyc +1
     if (param === 'create') return createData();   // cyc +1 ; cog +1
     if (param === 'update') return updateData();   // cyc +1 ; cog +1
@@ -190,7 +209,7 @@ function A(param: string): string {                // cyc +1
     throw new Error('Unknown operation.');
 }
 
-// Case B (Cyclomatic complexity 4; Cognitive complexity 1)
+// Case B (Cyclomatic Complexity 4; Cognitive Complexity 1)
 function B(param: string): string {                      // cyc +1
     switch (param) {                                     //          cog +1
         case 'create': return createData();              // cyc +1
@@ -200,33 +219,43 @@ function B(param: string): string {                      // cyc +1
     }
 }
 ```
-เนื่องจาก `switch` เรารู้อยู่แล้วว่าตัวแปรไหนกำลังถูกพิจารณาเป็นค่าต่างๆ
-แค่เพียงมองผ่านๆก็รู้แล้วว่า ถ้าตัวแปรมีค่าใดๆ จะได้ผลลัพธ์อย่างไร
-_(เฉพาะกรณี `switch` แล้ว `return` เลย; ถ้า `switch` แล้ว `break` จะถูกบวกค่าการ break ออกจาก scope)_
+เนื่องจาก `switch` ทั้งก้อน เรารู้อยู่แล้วว่าตัวแปรไหนกำลังถูกพิจารณา
+ดังนั้นเพียงมองผ่านๆก็รู้แล้วว่า ถ้าตัวแปรมีค่าหนึ่ง แล้วผลลัพธ์ของ function นี้จะเป็นอย่างไร
+_(เฉพาะกรณี `switch` แล้ว `return` เลย; ถ้า `switch` แล้ว `break` จะถูกบวกค่าการ break ออกจาก flow)_
 
-ต่างกับ `if` ที่ต้องคอยระวังว่าแต่ละ condition เชคตัวแปรใดอยู่ ซึ่งอาจจะไม่เหมือนกันก็ได้
-จึงทำให้มีแต้มความยากสำหรับแต่ละ condition
+ต่างกับ `if` ที่ต้องคอยระวังว่าแต่ละ condition มีหน้่าตาเป็นอย่างไร
+กำลังเปรียบเทียบใดอยู่ หรือเป็นตัวแปร flag หรืออื่ีนๆ
+จึงทำให้มีแต้มความยากในการแต่ละ condition
 
-ส่วนของรายละเอียดเพิ่มเติมสามารถอ่าน white paper ของ SonarSource ได้จาก reference ด้านล่าง
+นี่เป็นเพียงตัวอย่างคร่าวๆ 
+สำหรับรายละเอียดของการนับแต้ม Cognitive Complexity 
+ทั้งหมดสามารถอ่านเต็มๆได้จาก white paper ที่ reference ข้างล่าง
 
 ---
 
 ### Cognitive Complexity ในการใช้งานจริง
-เนื่องจาก Cognitive Complexity ยังไม่เป็นที่แพร่หลาย tools ที่มีความสามารถในการวัด
-หรือ IDE tools ที่สามารถโชว์แต้มได้ขณะเขียน code เลย ยังมีน้อย
-
+มี tool แค่ไม่กี่ตัว (เท่าที่รู้จัก) ที่วัด Cognitive Complexity ได้
+แต่หนึ่งในนั้นมี ESLint ซึ่งก็ทำให้ชาว JavaScript/TypeScript อุ่นใจแล้ว
+ 
 #### Lint tools
 1. SonarQube
-2. ESLint (ใช้ plugin `eslint-plugin-sonarjs`)
-![Cognitive complexity inspection tool](../images/cognitive-complexity-lint_ide.png)
+2. ESLint [(plugin `eslint-plugin-sonarjs`)](https://github.com/SonarSource/eslint-plugin-sonarjs)
+![Cognitive Complexity lint tool](../images/cognitive-complexity-lint.png)
 
 #### IDE inspection tool
-1. CongitiveComplexity (JetBrain's Rider plugin)
-![Cognitive complexity inspection tool](../images/cognitive-complexity-ide-tool.png)
+1. CongitiveComplexity [(JetBrains Rider plugin)](https://plugins.jetbrains.com/plugin/12024-cognitivecomplexity) _(supports C# only)_
+![Cognitive Complexity inspection tool](../images/cognitive-complexity-ide-tool.png)
 
 ---
 
-สำหรับใครที่ยังไม่เข้าใจว่า lint tools คืออะไร ใช้งานอย่างไร หรือมีประโยชน์อย่างไร
+ซึ่งลำพังตัว Cognitive Complexity เองนั้นเป็นเพียง metric บอกความยากในการอ่าน
+แต่ถ้าพึ่ง Cognitive Complexity อย่างเดียว อาจจะทำให้เกิดเคสที่อ่านง่าย แต่เขียน test ยาก
+เช่นมี switch case หรือ shorthand operators เต็มไปหมด ซึ่งอาจทำให้ Cognitive Complexity น้อย
+แต่ function มีทางแยกเยอะมาก จนอาจจะเขียน test ได้ไม่ครบทุกเคส จึงอาจจะนำ
+Cyclomatic Complexity มาร่วมเป็น metric อีกตัว แล้วตั้ง threshold ของทั้ง 2 ตัวให้สมเหตุสมผล
+เพื่อให้ function อ่านได้ไม่ยากเกินไป และ เทสได้ไม่ยากเกินไป
+
+ps. สำหรับใครที่ยังไม่เข้าใจว่า lint tools คืออะไร ใช้งานอย่างไร หรือมีประโยชน์อย่างไร
 ตอนต่อไปจะอธิบายถึงการใช้ lint tools สำหรับทั้ง project ทำคนเดียวและที่ทำร่วมกันให้มีประสิทธิภาพ
 ฝากติดตามด้วย ;)
 
