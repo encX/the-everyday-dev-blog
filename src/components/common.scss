@@ -67,7 +67,7 @@ $accent-darker: darken($accent, 20%);
 	@media screen and (min-width: $screen-sm-min) {
 		padding-right: calc(env(safe-area-inset-right) + 16px);
 		padding-left: calc(env(safe-area-inset-left) + 16px);
-		width: 100%;
+		width: calc(100vw - 32px);
 	}
 
 	max-width: $screen-md-min;
