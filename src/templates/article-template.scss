@@ -76,7 +76,10 @@ main article.post {
 				@media (prefers-color-scheme: dark) { border-color: $light-dim }
 			}
 		}
-		> p { line-height: 1.5 }
+		> p {
+			line-height: 1.6;
+			letter-spacing: .02em
+		}
 	}
 }
 
