@@ -1,7 +1,7 @@
 ---
 title: "อย่า  \"สวัสดี\" ใน chat !"  
 headliner: "ทักแชททั้งที สวัสดีไม่พอ ทุกคนต้องรอ ขอร้อง อย่าแค่สวัสดี"  
-featured: true  
+featured: false  
 featuredImage: ../images/dont-just-hello-featured.jpg 
 path: "/dont-just-hello"  
 date: "2020-05-29"  

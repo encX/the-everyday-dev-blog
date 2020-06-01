@@ -1,7 +1,7 @@
 ---
 title: "Cognitive Complexity"  
 headliner: "เมื่อการอ่าน code ของคนอื่นเป็นเรื่องจำเป็น"  
-featured: true  
+featured: false  
 featuredImage: ../images/cognitive-complexity-featured.jpg 
 path: "/cognitive-complexity"  
 date: "2020-01-25"  
