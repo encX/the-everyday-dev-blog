@@ -1,4 +1,4 @@
-name: Content PR checks
+name: PR checks
 
 on:
   push:
@@ -7,11 +7,18 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      - name: Cache node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: v1-yarn-
+      - run: yarn install --frozen-lockfile
       - run: yarn test
