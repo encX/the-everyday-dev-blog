@@ -10,7 +10,8 @@
 		"types": [
 			"googlemaps",
 			"markerclustererplus",
-			"node"
+			"node",
+			"jest"
 		],
 		"allowJs": true,
 		"esModuleInterop": true,
