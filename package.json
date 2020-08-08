@@ -48,6 +48,6 @@
     "gatsby-remark-prismjs": "^3.3.24",
     "gatsby-transformer-remark": "^2.6.32",
     "jest": "^26.0.1",
-    "prismjs": "^1.17.1"
+    "prismjs": "^1.21.0"
   }
 }
